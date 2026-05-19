@@ -652,6 +652,17 @@ Tags: custom, clean, minimal, responsive
     transform: none;
   }
 
+/* Working on this right now make the background blur using Javascript 
+and also use the post_type to make this */
+  .card-steps{
+    position:fixed;
+    top:0;
+    transform: translateX(50%);
+    z-index: 1001;
+    background-color: black;
+    display: none;
+  }
+
   .alignwide{
     width:100vw;
   }

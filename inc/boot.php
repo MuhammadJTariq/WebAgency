@@ -16,6 +16,26 @@ class boot{
     }
 
     public function register_scripts(){
+        register_post_type('note', [
+            'label' => 'Notes',
+            'public' => true,
+            'show_in_menu' => true,
+            'show_in_rest' => false,
+            'publicly_queryable' => false,
+            'supports' => [
+                'title', 
+                'editor'
+            ],
+            'menu_icon' => 'dashicons-media-text'
+        ]);
+        add_meta_box(
+            'note_step',
+            'Add the Step Info',
+            [$this, 'note_callback'],
+            'note', 
+            'normal',
+            'default'
+        );
         add_rewrite_rule(
                 '^contactform/?$',
                 'index.php?contactform=1',
@@ -34,6 +54,11 @@ class boot{
         wp_register_script('form', SCRIPTS_URI . '/form.js', [], null, true);
     }
 
+    public function note_callback($post){
+        $value = get_post_meta($post->ID, 'note_step', true);
+        echo '<input type="text" name="note_extra" value="' . esc_attr($value) . '" style="width:100%;" />';
+
+    }
 
     public function enqueue_scripts(){
         wp_enqueue_style('style');
@@ -54,6 +79,8 @@ class boot{
     }
 
     public function setupDefaults(){
+        global $wpdb;
+        // create the table for the forms - and then another class to handle form submissions
         add_theme_support( 'title-tag' );
         add_theme_support('post-thumbnails');
         add_theme_support('alignwide');
