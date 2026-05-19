@@ -114,6 +114,14 @@ class boot{
             wp_enqueue_style('form');
             $nonce = wp_create_nonce('form_nonce');
             wp_enqueue_script('form');
+            wp_enqueue_script(
+                    'tsparticles',
+                    'https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js',
+                    [],
+                    null,
+                    true
+            );
+
             wp_add_inline_script( 'form', 'const nonce = ' . $nonce .  '', 'before' );
         }
         if(is_404()){
