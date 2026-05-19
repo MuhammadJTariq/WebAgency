@@ -107,6 +107,22 @@ Tags: custom, clean, minimal, responsive
     transition: all 0.25s;
     font-weight: 400;
   }
+
+  #close{
+    background: transparent;
+    border: 1px solid var(--gray-mid);
+    color: var(--silver);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-weight: 400;
+    float:right;
+
+  }
  
   .nav-cta:hover {
     border: var(--border-onhover);
@@ -654,14 +670,40 @@ Tags: custom, clean, minimal, responsive
 
 /* Working on this right now make the background blur using Javascript 
 and also use the post_type to make this */
-  .card-steps{
+  .card-steps.visible{
     position:fixed;
-    top:0;
-    transform: translateX(50%);
+    box-sizing: border-box;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    border:var(--border-onhover);
+    border-radius:1vw;
+    max-height: 80vh;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
     z-index: 1001;
     background-color: black;
+    display: block;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+   .card-steps.hide{
     display: none;
   }
+  .card-content > *{
+    margin-top:2vh;
+    margin-bottom: 2vh;
+    
+  }
+
+  main.blur{
+    filter:blur(5px);
+
+  }
+
+ 
+
+ 
 
   .alignwide{
     width:100vw;
