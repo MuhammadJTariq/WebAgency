@@ -275,10 +275,41 @@ class boot{
             exit;
         }
         if(get_query_var('filterItem')){
-            echo "Hello from this item";
+            $nonce = $_GET['nonce'] ?? '';
+            $value = $_GET['value'] ?? '';
+            if (!isset($_GET['nonce'], $_GET['value'])) {
+                wp_send_json_error('Missing parameters');
+            }
+            $query = new WP_Query([
+                'post_type'      => 'post',
+                'category_name' => sanitize_text_field( $value ),
+                'posts_per_page' => 6,
+                'orderby'        => 'date',
+                'order'          => 'DESC'
+            ]);
+           $data = [];
+
+            foreach ($query->posts as $post) {
+
+                $data[] = [
+                    'title'        => $post->post_title,
+                    'excerpt'      => $post->post_excerpt,
+                    'permalink'    => get_permalink($post->ID),
+                    'readtime'     => hopQuery::get_reading_time($post->ID),
+                    'date'         => $post->post_date,
+                    'category'     => $value,
+                    'thumbnail_url'=> get_the_post_thumbnail_url($post->ID, 'full')
+                ];
+            }
+
+            wp_send_json($data);
+            // set transient with this data for 12 hours each time and then delete 
+            // do this for each value that is filtered and searched
+            
         }
 
         if (get_query_var('get')) {
+                // if httprefferrer not single.js exit;
                 global $wpdb;
 
                 $id = isset($_POST['id']) ? intval($_POST['id']) : 0;

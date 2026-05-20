@@ -14,11 +14,15 @@
 <div class="filter-bar">
   <span class="filter-label">Filter</span>
   <button class="filter-btn active">All</button>
-  <button class="filter-btn">WordPress</button>
-  <button class="filter-btn">Squarespace</button>
-  <button class="filter-btn">Landing Pages</button>
-  <button class="filter-btn">Tips & Tricks</button>
-  <button class="filter-btn">Business</button>
+  <?php $categories = get_categories(); 
+  foreach($categories as $cat){
+    ?>
+  <button class="filter-btn"><?php echo $cat->name; ?></button>
+    <?
+  }
+  
+  ?>
+
 </div>
  
 <!-- FEATURED POST -->

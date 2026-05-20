@@ -3,6 +3,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       console.log(btn.innerHTML);
+      fetchData(btn.innerHTML);
     });
   });
  
@@ -19,11 +20,21 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   reveals.forEach(el => obs.observe(el));
 
 
-function fetch(name, url){
-  // use the fetch object over here to return the post items as an object 
-  // we can make a class to emulate this as well
-}
-
-
 console.log(nonce);
 console.log(url);
+
+
+
+function fetchData(value) {
+  return fetch(url + '?nonce=' + encodeURIComponent(nonce) + '&value=' + encodeURIComponent(value), {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log("rest response triggered");
+    console.log(data);
+  });
+}

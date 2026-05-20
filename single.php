@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<div class="progress-bar" id="progress"></div>
+
 
 <?php 
 if(have_posts()){
