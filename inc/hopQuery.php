@@ -10,13 +10,199 @@ class hopQuery{
         //add_action('parse_query', [$this, 'loadBlog']);
     }
 
+    public static function get_reading_time($post_id = null) {
+        $post_id = $post_id ?: get_the_ID();
+        $content = get_post_field('post_content', $post_id);
+
+        $word_count = str_word_count(strip_tags($content));
+        $minutes = ceil($word_count / 200);
+
+        return $minutes;
+    }
+
     public function loadBlog(){
         if(is_page('blog')){
             add_action('FormatFeatured', [$this, 'formatFeatured']);
             add_action('FormatRecent', [$this, 'formatRecent']);
             add_action('returnMostRead', [$this, 'returnMostRead']);
+            add_action('returnCats', [$this, 'returnCats']);
         }
     }
 
+    public function formatFeatured(){
+        $query = new WP_Query([
+            'post_type' => 'post',
+            'meta_query' => [
+                [
+                    'key' => '_is_featured',
+                    'value' => 1,
+                    'compare' => '='
+                ]
+            ],
+            'post_per_page' => 1
+
+        ]);
+
+        if($query->have_posts()){
+            while($query->have_posts()){
+                $query->the_post();
+                $thumbnail = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+                $categories = get_the_category( get_the_ID() );
+                ob_start();
+                ?>
+
+                <section class="featured">
+                <div class="featured-image"
+                style="background-image:url('<?php echo $thumbnail; ?>');
+                background-size:cover;
+                background-position:center;
+                "
+                
+                >
+                    
+               <div class="featured-tag-overlay">Featured Post</div>
+                </div>
+                <div class="featured-content reveal">
+                    <div class="post-meta">
+                    <span class="post-category"><?php echo $categories[0]->name; ?></span>
+                    <span class="post-date"><?php echo get_the_date(); ?></span>
+                    </div>
+                    <h2><?php echo get_the_title(); ?></h2>
+                    <p><?php echo get_the_excerpt(); ?></p>
+                    <a href="<?php echo get_the_permalink(); ?>" class="read-link">Read Article</a>
+                </div>
+                </section>
+
+
+
+                <?
+                echo ob_get_clean();
+            }
+        }
+
+
+        
+    }
+
+    public function formatRecent(){
+        $query = new WP_Query([
+            'post_type' => 'post',
+
+            'meta_query' => [
+                [
+                    'key'     => '_is_featured',
+                    'value'   => [1],
+                    'compare' => 'NOT IN'
+                ]
+            ],
+
+            'posts_per_page' => 3
+        ]);
+
+        if($query->have_posts()){
+            while($query->have_posts()){
+                $query->the_post();
+                $thumbnail = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+                $cats = get_the_category( get_the_ID() );
+
+                ob_start();
+                ?>
+                <article class="blog-card reveal">
+                    <div class="card-image"
+
+                    style="background-image: url('<?php echo $thumbnail; ?>');"
+                    background-size:cover;
+                    background-position:center;     
+                    >
+                        
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                        <span class="card-category"><?php echo $cats[0]->name ; ?></span>
+                        <span class="card-date"><?php echo get_the_date( ); ?></span>
+                        </div>
+                        <h3><?php echo get_the_title(); ?></h3>
+                        <p>
+                            <?php echo get_the_excerpt(  ); ?> 
+                        </p>
+                        <div class="card-footer">
+                        <span class="read-time"><?php echo self::get_reading_time(get_the_ID()); ?> min</span>
+                        <a href="#" class="card-link">Read</a>
+                        </div>
+                    </div>
+                    </article>
+
+
+
+
+
+
+
+
+                <?
+
+
+            }
+        }
+
+
+    }
+
+    public function returnMostRead(){
+         global $wpdb;
+        $table = $wpdb->prefix . 'most_read';
+        $post_ids = $wpdb->get_col(
+            "SELECT post_id
+            FROM $table 
+            ORDER BY views DESC
+            LIMIT 5"
+        );
+        $query = new WP_Query([
+            'post_type' => 'post',
+            'post__in' => $post_ids,
+            'orderby' => 'post__in',
+            'posts_per_page' => 5
+        ]);
+
+        if($query->have_posts()){
+            while($query->have_posts()){
+                $query->the_post();
+                ob_start();
+
+                ?>
+
+                 <a href="<?php echo get_the_permalink(get_the_ID()); ?>" class="post-list-item reveal">
+                    <div class="post-num">04</div>
+                    <div class="post-list-info">
+                    <div class="post-list-cat">Business · Mar 5, 2025</div>
+                    <h4><?php echo get_the_title(); ?></h4>
+                    <p><?php echo get_the_excerpt( ); ?></p>
+                    </div>
+                </a>
+
+                <?
+
+                echo ob_get_clean();
+            }
+        }
+    }
+
+    public function returnCats(){
+        $categories = get_categories();
+        foreach($categories as $category){
+            ?>
+              <a href="<?php echo $category->slug; ?>" class="topic-item">
+                <span class="topic-name"><?php echo $category->name; ?></span>
+                <span class="topic-count"><?php echo $category->count; ?></span>
+             </a>
+
+
+            <?
+        }
+    }
+    
+
     
 }
+
+new hopQuery();

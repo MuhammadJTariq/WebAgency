@@ -101,9 +101,16 @@ class boot{
             'index.php?filterItem=1',
             'top'
         );
+
+        add_rewrite_rule(
+            '^get/?$',
+            'index.php?get=1',
+            'top'
+        );
         add_filter('query_vars', function($vars){
             $vars[] = 'contactform';
             $vars[] =  'filterItem';
+            $vars[] = 'get';
             //addtoLog(json_encode($vars, JSON_PRETTY_PRINT));
             return $vars;
             
@@ -201,7 +208,9 @@ class boot{
         }
         if(is_single()){
             wp_enqueue_style('single');
+            $nonce = wp_create_nonce('single_nonce');
             wp_enqueue_script('single');
+            wp_add_inline_script( 'single', 'const nonce = ' . $nonce . ';', 'after' );
         }
         if(is_404()){
             wp_enqueue_style('404');
@@ -223,6 +232,36 @@ class boot{
         register_nav_menus([
             'primary' => 'Primary Menu'
         ]);
+
+         global $wpdb;
+
+        $table_4 = $wpdb->prefix . "most_read";
+        $charset_collate = $wpdb->get_charset_collate();
+
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+        $sql4 = "CREATE TABLE {$table_4} (
+
+            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+
+            post_id BIGINT UNSIGNED NOT NULL,
+
+            views BIGINT UNSIGNED DEFAULT 0,
+
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+            PRIMARY KEY (id),
+
+            KEY post_id (post_id),
+
+            CONSTRAINT fk_most_read_post
+                FOREIGN KEY (post_id)
+                REFERENCES {$wpdb->posts}(ID)
+                ON DELETE CASCADE
+
+        ) $charset_collate;";
+
+        dbDelta($sql4);
     }
 
     public function switchTheme(){
@@ -238,6 +277,44 @@ class boot{
         if(get_query_var('filterItem')){
             echo "Hello from this item";
         }
+
+        if (get_query_var('get')) {
+                global $wpdb;
+
+                $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
+                add_log("Post ID number " . $id);
+
+                if (isset($_POST['action']) && $_POST['action'] === 'update_views') {
+
+                    $table = $wpdb->prefix . 'most_read';
+
+                    $exists = $wpdb->get_var(
+                        $wpdb->prepare(
+                            "SELECT COUNT(*) FROM $table WHERE post_id = %d",
+                            $id
+                        )
+                    );
+
+                    if ($exists > 0) {
+                        $wpdb->query(
+                            $wpdb->prepare(
+                                "UPDATE $table SET views = views + 1 WHERE post_id = %d",
+                                $id
+                            )
+                        );
+                    } else {
+                        $wpdb->insert(
+                            $table,
+                            [
+                                'post_id' => $id,
+                                'views' => 1
+                            ]
+                        );
+                    }
+
+                    wp_send_json_success(['message' => 'row updated successfully']);
+                }
+}
     }
 }
 

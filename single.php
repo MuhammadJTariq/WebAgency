@@ -1,32 +1,43 @@
 <?php get_header(); ?>
 
-<header class="post-hero">
-  <div class="breadcrumb">
-    <a href="/blog">Blog</a>
-    <span>/</span>
-    <a href="#">WordPress</a>
-    <span>/</span>
-    <span style="color: var(--gray-dark);">Current Post</span>
-  </div>
- 
+
+
+<?php 
+if(have_posts()){
+  while(have_posts()){
+    the_post();
+    $cat = get_the_category( get_the_ID() );
+
+    ob_start();
+    ?>
+    <header class="post-hero">
+      <div class="breadcrumb">
+        <a href="<?php echo home_url('/blog'); ?>">Blog</a>
+        <span>/</span>
+        <a href="<?php echo $cat[0]->slug; ?>"><?php echo $cat[0]->name; ?></a>
+        <span>/</span>
+        <span style="color: var(--gray-dark);">Current Post</span>
+    </div>
   <div class="post-hero-inner">
     <div>
-      <span class="post-category-tag">WordPress</span>
-      <h1>Why Your WordPress Site Is Slow (And How to Fix It Fast)</h1>
-      <p class="post-hero-excerpt">A slow website isn't just frustrating — it's costing you customers. Page speed affects your Google ranking, bounce rate, and whether people trust your business before they even read a word.</p>
+      <span class="post-category-tag"><?php echo $cat[0]->name; ?></span>
+      <h1><?php echo get_the_title(); ?>h1>
+      <p class="post-hero-excerpt">
+        <?php echo get_the_excerpt(  ); ?>
+      </p>
     </div>
     <div class="post-meta-panel">
       <div class="meta-block">
         <div class="meta-label">Published</div>
-        <div class="meta-value">May 14, 2025</div>
+        <div class="meta-value"><?php echo get_the_date(); ?></div>
       </div>
       <div class="meta-block">
         <div class="meta-label">Author</div>
-        <div class="meta-value">Hopreneur</div>
+        <div class="meta-value"><?php echo get_the_author(); ?></div>
       </div>
       <div class="meta-block">
         <div class="meta-label">Read Time</div>
-        <div class="meta-value">7 Min Read</div>
+        <div class="meta-value"><?php echo hopQuery::get_reading_time(get_the_ID()); ?> Read</div>
       </div>
       <div class="meta-block">
         <div class="meta-label">Category</div>
@@ -34,38 +45,18 @@
       </div>
     </div>
   </div>
- 
-  <!-- HERO IMAGE -->
+   <!-- HERO IMAGE -->
   <div class="post-hero-image">
-    <svg viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <rect width="1200" height="420" fill="#111"/>
-      <line x1="0" y1="0" x2="1200" y2="420" stroke="#181818" stroke-width="1"/>
-      <line x1="0" y1="420" x2="1200" y2="0" stroke="#181818" stroke-width="1"/>
-      <line x1="600" y1="0" x2="600" y2="420" stroke="#161616" stroke-width="1"/>
-      <line x1="0" y1="210" x2="1200" y2="210" stroke="#161616" stroke-width="1"/>
-      <!-- Browser mockup -->
-      <rect x="200" y="60" width="800" height="300" rx="6" fill="#141414" stroke="#222" stroke-width="1"/>
-      <rect x="200" y="60" width="800" height="40" rx="6" fill="#1a1a1a"/>
-      <rect x="200" y="80" width="800" height="20" fill="#1a1a1a"/>
-      <circle cx="228" cy="80" r="6" fill="#252525"/>
-      <circle cx="248" cy="80" r="6" fill="#252525"/>
-      <circle cx="268" cy="80" r="6" fill="#252525"/>
-      <rect x="296" y="71" width="580" height="18" rx="9" fill="#111" stroke="#222" stroke-width="1"/>
-      <!-- Speed meter -->
-      <circle cx="600" cy="230" r="100" fill="none" stroke="#1e1e1e" stroke-width="2"/>
-      <circle cx="600" cy="230" r="100" fill="none" stroke="#2a2a2a" stroke-width="12" stroke-dasharray="200 428" stroke-dashoffset="0" transform="rotate(-210 600 230)"/>
-      <circle cx="600" cy="230" r="100" fill="none" stroke="#3a3a3a" stroke-width="12" stroke-dasharray="80 348" stroke-dashoffset="-200" transform="rotate(-210 600 230)"/>
-      <text x="600" y="222" text-anchor="middle" font-family="monospace" font-size="32" fill="#555" font-weight="700">38</text>
-      <text x="600" y="244" text-anchor="middle" font-family="monospace" font-size="10" fill="#2a2a2a" letter-spacing="3">SCORE</text>
-      <!-- Bars -->
-      <rect x="240" y="290" width="60" height="40" rx="2" fill="#1e1e1e"/>
-      <rect x="315" y="270" width="60" height="60" rx="2" fill="#222"/>
-      <rect x="390" y="250" width="60" height="80" rx="2" fill="#252525"/>
-      <rect x="795" y="260" width="60" height="70" rx="2" fill="#1e1e1e"/>
-      <rect x="870" y="280" width="60" height="50" rx="2" fill="#1e1e1e"/>
-    </svg>
+    
   </div>
 </header>
+    
+  <? 
+
+    echo ob_get_clean();
+  }
+}
+ 
  
 <!-- BODY -->
 <div class="post-body">
