@@ -15,6 +15,14 @@ class boot{
         add_action('template_redirect', [$this, 'intercept_submission']);
         add_action('add_meta_boxes', [$this, 'add_meta']);
         add_action('save_post_note', [$this, 'save_note']);
+        add_action('save_post' ,[$this, 'save_featured']);
+    }
+
+    public function save_featured($post_id){
+        $value = isset($_POST['is_featured']) ? 1 : 0;
+        update_post_meta($post_id, '_is_featured', $value);
+
+
     }
 
     public function save_note($post_id){
@@ -36,6 +44,19 @@ class boot{
             'normal',
             'default'
         );
+
+        add_meta_box(
+            'featured_post',
+            'Featured Post',
+            function($post){
+                $value = get_post_meta($post->ID, '_is_featured', true);
+                echo '<label>';
+                echo '<input type="checkbox" name="is_featured" value="1" ' . checked($value, 1, false) . ' />';
+                echo ' Mark as Featured';
+                echo '</label>';
+            },
+            'post'
+        );
     }
 
     public function register_scripts(){
@@ -56,12 +77,22 @@ class boot{
                 'index.php?contactform=1',
                 'top'
         );
+
+
+        add_rewrite_rule(
+            '^filterItem/?$',
+            'index.php?filterItem=1',
+            'top'
+        );
         add_filter('query_vars', function($vars){
             $vars[] = 'contactform';
+            $vars[] =  'filterItem';
             //addtoLog(json_encode($vars, JSON_PRETTY_PRINT));
             return $vars;
             
         });
+
+       
         wp_register_style('style', get_stylesheet_uri());
         wp_register_style('form', STYLES_URI . '/form.css');
         wp_register_style('blog', STYLES_URI . '/blog.css');
@@ -70,6 +101,7 @@ class boot{
         wp_register_script('index', SCRIPTS_URI . '/index.js', [], null, true);
         wp_register_script('form', SCRIPTS_URI . '/form.js', [], null, true);
         wp_register_script('blog', SCRIPTS_URI . '/blog.js' , [], null, true);
+        wp_register_script('single', SCRIPTS_URI . '/single.js', [], null, true);
     }
 
     public function note_callback($post){
@@ -125,12 +157,35 @@ class boot{
                     true
             );
 
-            wp_add_inline_script( 'form', 'const nonce = ' . $nonce .  '', 'before' );
+            wp_add_inline_script( 
+                'form', 
+                'const nonce = ' . $nonce .  ';', 
+                'before' );
         }
 
         if(is_page('blog')){
             wp_enqueue_style('blog');
             wp_enqueue_script('blog');
+            $nonce = wp_create_nonce('filter_nonce');
+            addtoLog("Nonce created" . $nonce);
+            $url   = home_url('/filterItem');
+            addtoLog('Url added for blog' . $url);
+
+            wp_add_inline_script(
+                'blog',
+                'const nonce = ' . json_encode($nonce) . ';',
+                'before'
+            );
+
+            wp_add_inline_script(
+                'blog',
+                'const url = ' . json_encode($url) . ';',
+                'before'
+            );
+        }
+        if(is_single()){
+            wp_enqueue_style('single');
+            wp_enqueue_script('single');
         }
         if(is_404()){
             wp_enqueue_style('404');
@@ -163,6 +218,9 @@ class boot{
             addtoLog("contact form intercepted");
             echo "Hello World";
             exit;
+        }
+        if(get_query_var('filterItem')){
+            echo "Hello from this item";
         }
     }
 }

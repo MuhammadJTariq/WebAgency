@@ -16,3 +16,12 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => obs.observe(el));
+
+
+function fetch(name, url){
+  // use the fetch object over here to return the post items
+}
+
+
+console.log(nonce);
+console.log(url);
