@@ -21,3 +21,27 @@
   }, { rootMargin: '-20% 0px -70% 0px' });
  
   sections.forEach(s => tocObserver.observe(s));
+
+
+setTimeout(async () => {
+        const header = document.querySelector("#header-single");
+        try {
+            const response = await fetch('/get', {
+                method : 'POST',
+                headers : {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    id : header.dataset.id,
+                    action : 'update_views'
+                })
+            });
+
+            const data = await response.json();
+        } catch(error){
+            console.log(error);
+        }
+
+
+    }, 20000);
+    

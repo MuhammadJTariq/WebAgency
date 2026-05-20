@@ -4,12 +4,81 @@ if(!defined('ABSPATH')){
 }
 
 class hopQuery{
-
+    public static $headings = [];
     public function __construct(){
         add_action('pre_get_posts', [$this, 'loadBlog']);
         //add_action('parse_query', [$this, 'loadBlog']);
     }
 
+    public static function add_toc_headings($content) {
+
+    libxml_use_internal_errors(true);
+
+    $dom = new DOMDocument();
+    $dom->loadHTML('<?xml encoding="utf-8" ?>' . $content);
+
+    $headings = [];
+    $tags = ['h1', 'h2', 'h3'];
+
+    foreach ($tags as $tag) {
+
+        $elements = $dom->getElementsByTagName($tag);
+
+        foreach ($elements as $index => $el) {
+
+            $text = trim($el->textContent);
+            $id = sanitize_title($text) . '-' . $index;
+
+            // inject ID into HTML
+            $el->setAttribute('id', $id);
+
+            // ✅ IMPORTANT: append, not overwrite
+            $headings[] = [
+                'tag'  => $tag,
+                'text' => $text,
+                'id'   => $id
+            ];
+        }
+    }
+
+    $modified = $dom->saveHTML();
+
+    // store structured headings
+    self::$headings = $headings;
+
+    return $modified;
+}
+   public static function displayToc() {
+    $headings = self::$headings;
+
+    if (empty($headings)) {
+        return '';
+    }
+
+    $output = '';
+    $count = 1;
+
+    foreach ($headings as $head) {
+
+        $id = esc_attr($head['id']);
+        $text = esc_html($head['text']);
+
+        $output .= '
+            <li>
+                <a href="#' . $id . '">
+                    <span class="toc-num">' . str_pad($count, 2, '0', STR_PAD_LEFT) . '</span>
+                    <span class="toc-text">' . $text . '</span>
+                </a>
+            </li>
+        ';
+
+        $count++;
+    }
+
+    self::$headings = [];
+
+    return $output;
+}
     public static function get_reading_time($post_id = null) {
         $post_id = $post_id ?: get_the_ID();
         $content = get_post_field('post_content', $post_id);
@@ -26,6 +95,7 @@ class hopQuery{
             add_action('FormatRecent', [$this, 'formatRecent']);
             add_action('returnMostRead', [$this, 'returnMostRead']);
             add_action('returnCats', [$this, 'returnCats']);
+            add_action('returnTOC', [$this, 'returnTOC']);
         }
     }
 
