@@ -19,5 +19,15 @@
     ]
    );
    ?>
-  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+  <?php if(is_home()){
+    ?>
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+    <?php
+  }
+  else {
+    ?>
+   <a href="https://us13.list-manage.com/contact-form?u=6dd9a2693801375b334b9176b&form_id=088d88f24d4ae3778dff73a44e5261bb"><button class="nav-cta">Get a Quote</button></a>
+   <?php
+  } 
+  ?>
 </nav>

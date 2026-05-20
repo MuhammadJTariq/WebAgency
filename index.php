@@ -158,8 +158,8 @@
 <section class="cta-section" id="contact">
   <h2>Ready to Build?</h2>
   <p>Tell me what you're working on — I'll get back to you within 24 hours.</p>
-  <a href="mailto:hello@hopreneur.com" class="btn-primary">Email Me Directly</a>
-  <div class="cta-email">hello@hopreneur.com</div>
+  <a href="https://us13.list-manage.com/contact-form?u=6dd9a2693801375b334b9176b&form_id=088d88f24d4ae3778dff73a44e5261bb" class="btn-primary">Get a quote now</a>
+  <div class="cta-email">muhammad.tws49@gmail.com</div>
 </section>
 
 

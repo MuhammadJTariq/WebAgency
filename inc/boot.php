@@ -64,9 +64,12 @@ class boot{
         });
         wp_register_style('style', get_stylesheet_uri());
         wp_register_style('form', STYLES_URI . '/form.css');
+        wp_register_style('blog', STYLES_URI . '/blog.css');
         wp_register_style('404', STYLES_URI . '/404.css');
+        wp_register_style('single', STYLES_URI . '/single.css');
         wp_register_script('index', SCRIPTS_URI . '/index.js', [], null, true);
         wp_register_script('form', SCRIPTS_URI . '/form.js', [], null, true);
+        wp_register_script('blog', SCRIPTS_URI . '/blog.js' , [], null, true);
     }
 
     public function note_callback($post){
@@ -124,9 +127,18 @@ class boot{
 
             wp_add_inline_script( 'form', 'const nonce = ' . $nonce .  '', 'before' );
         }
+
+        if(is_page('blog')){
+            wp_enqueue_style('blog');
+            wp_enqueue_script('blog');
+        }
         if(is_404()){
             wp_enqueue_style('404');
 
+        }
+
+        if(is_page('single')){
+            wp_enqueue_style('single');
         }
     }
 
