@@ -93,9 +93,6 @@ class hopQuery{
         if(is_page('blog')){
             add_action('FormatFeatured', [$this, 'formatFeatured']);
             add_action('FormatRecent', [$this, 'formatRecent']);
-            add_action('returnMostRead', [$this, 'returnMostRead']);
-            add_action('returnCats', [$this, 'returnCats']);
-            add_action('returnTOC', [$this, 'returnTOC']);
         }
     }
 
@@ -218,8 +215,8 @@ class hopQuery{
 
     }
 
-    public function returnMostRead(){
-         global $wpdb;
+    public static function returnMostRead(){
+        global $wpdb;
         $table = $wpdb->prefix . 'most_read';
         $post_ids = $wpdb->get_col(
             "SELECT post_id
@@ -235,26 +232,32 @@ class hopQuery{
         ]);
 
         if($query->have_posts()){
+            $counter = 0;
             while($query->have_posts()){
                 $query->the_post();
+                $cat = get_the_category( get_the_ID() );
+
                 ob_start();
 
                 ?>
-
-                 <a href="<?php echo get_the_permalink(get_the_ID()); ?>" class="post-list-item reveal">
-                    <div class="post-num">04</div>
+                <a href="<?php echo get_the_permalink() ?>" class="post-list-item reveal">
+                    <div class="post-num">0 <?php echo $counter; ?></div>
                     <div class="post-list-info">
-                    <div class="post-list-cat">Business · Mar 5, 2025</div>
+                    <div class="post-list-cat"><?php echo $cat[0]->name; ?> · <?php echo get_the_date(); ?></div>
                     <h4><?php echo get_the_title(); ?></h4>
-                    <p><?php echo get_the_excerpt( ); ?></p>
+                    <p>
+                        <?php echo get_the_excerpt(  ); ?>
+                    </p>
                     </div>
                 </a>
-
                 <?
 
                 echo ob_get_clean();
+                $counter++;
+                
             }
         }
+        return;
     }
 
     public function returnCats(){

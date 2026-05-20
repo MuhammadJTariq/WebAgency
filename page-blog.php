@@ -36,44 +36,9 @@
 <!-- LIST + SIDEBAR -->
 <section class="list-section">
   <div>
-    <div class="list-section-title">More Articles</div>
+    <div class="list-section-title">Most Read</div>
     <div class="post-list">
- 
-      <a href="#" class="post-list-item reveal">
-        <div class="post-num">04</div>
-        <div class="post-list-info">
-          <div class="post-list-cat">Business · Mar 5, 2025</div>
-          <h4>How Much Should a Website Actually Cost?</h4>
-          <p>The range is wild — $200 to $20,000 for what looks like the same thing. Here's what separates a cheap site from a valuable one, and where your money actually goes.</p>
-        </div>
-      </a>
- 
-      <a href="#" class="post-list-item reveal">
-        <div class="post-num">05</div>
-        <div class="post-list-info">
-          <div class="post-list-cat">WordPress · Feb 18, 2025</div>
-          <h4>The WordPress Plugins I Actually Install on Every Site</h4>
-          <p>Out of thousands of options, these are the handful that earn a spot on every build — for performance, security, and sanity.</p>
-        </div>
-      </a>
- 
-      <a href="#" class="post-list-item reveal">
-        <div class="post-num">06</div>
-        <div class="post-list-info">
-          <div class="post-list-cat">Tips & Tricks · Feb 3, 2025</div>
-          <h4>5 Signs It's Time to Redesign Your Website</h4>
-          <p>Most businesses wait too long. If your site is doing any of these five things, it's already costing you.</p>
-        </div>
-      </a>
- 
-      <a href="#" class="post-list-item reveal">
-        <div class="post-num">07</div>
-        <div class="post-list-info">
-          <div class="post-list-cat">Squarespace · Jan 20, 2025</div>
-          <h4>Getting the Most Out of Squarespace Without the Headaches</h4>
-          <p>Squarespace is powerful but has real limitations. Know these before you commit to the platform.</p>
-        </div>
-      </a>
+        <?php hopQuery::returnMostRead(); ?>
  
     </div>
   </div>

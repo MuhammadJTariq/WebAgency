@@ -282,7 +282,6 @@ class boot{
                 global $wpdb;
 
                 $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
-                add_log("Post ID number " . $id);
 
                 if (isset($_POST['action']) && $_POST['action'] === 'update_views') {
 
@@ -299,7 +298,7 @@ class boot{
                         $wpdb->query(
                             $wpdb->prepare(
                                 "UPDATE $table SET views = views + 1 WHERE post_id = %d",
-                                $id
+                                $id 
                             )
                         );
                     } else {

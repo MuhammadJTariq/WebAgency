@@ -10,6 +10,11 @@
 </head>
 <body>
     <?php body_class(); ?>
+
+<?php if(is_single()){
+  echo '<div class="progress-bar" id="progress"></div>';
+}
+?>
 <nav>
   <div class="nav-logo">Hopreneur<span>.</span></div>
    <ul class="nav-links">
