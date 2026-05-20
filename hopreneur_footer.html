@@ -1,0 +1,361 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
+  .hf * { box-sizing: border-box; font-family: 'Oswald', sans-serif; }
+
+  .hf {
+    background: #0a0a0a;
+    color: #e8e8e8;
+    border-top: 1px solid #1a1a1a;
+    width: 100%;
+  }
+
+  .hf-top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding: 72px 60px 56px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+
+  .hf-brand-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #e8e8e8;
+    margin-bottom: 14px;
+  }
+
+  .hf-brand-name span { color: #4a4a4a; }
+
+  .hf-brand-desc {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: #7a7a7a;
+    line-height: 1.8;
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+    max-width: 240px;
+  }
+
+  .hf-socials {
+    display: flex;
+    gap: 8px;
+  }
+
+  .hf-social {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a4a4a;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .hf-social:hover {
+    border-color: #7a7a7a;
+    color: #cccccc;
+  }
+
+  .hf-col-title {
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #2a2a2a;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hf-col-title::before {
+    content: '';
+    width: 16px;
+    height: 1px;
+    background: #2a2a2a;
+  }
+
+  .hf-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hf-links li a {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4a4a4a;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid #141414;
+    transition: all 0.2s;
+  }
+
+  .hf-links li:last-child a { border-bottom: none; }
+
+  .hf-links li a:hover { color: #cccccc; padding-left: 4px; }
+
+  .hf-links li a i {
+    font-size: 14px;
+    color: #2a2a2a;
+    transition: color 0.2s;
+  }
+
+  .hf-links li a:hover i { color: #7a7a7a; }
+
+  .hf-contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 0;
+    border-bottom: 1px solid #141414;
+  }
+
+  .hf-contact-item:last-child { border-bottom: none; }
+
+  .hf-contact-label {
+    font-size: 0.56rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #2a2a2a;
+  }
+
+  .hf-contact-val {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: #7a7a7a;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  a.hf-contact-val:hover { color: #cccccc; }
+
+  .hf-mid {
+    padding: 40px 60px;
+    border-bottom: 1px solid #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    background: #0d0d0d;
+  }
+
+  .hf-mid-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hf-mid-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #2a2a2a;
+  }
+
+  .hf-mid-text {
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: #7a7a7a;
+    text-transform: uppercase;
+  }
+
+  .hf-newsletter {
+    display: flex;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .hf-email-input {
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-right: none;
+    color: #e8e8e8;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    padding: 11px 18px;
+    width: 220px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .hf-email-input::placeholder { color: #2a2a2a; }
+  .hf-email-input:focus { border-color: #4a4a4a; }
+
+  .hf-email-btn {
+    background: #cccccc;
+    border: 1px solid #cccccc;
+    color: #0a0a0a;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 11px 22px;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .hf-email-btn:hover { background: #e8e8e8; }
+
+  .hf-bottom {
+    padding: 22px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .hf-copy {
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #2a2a2a;
+  }
+
+  .hf-badges {
+    display: flex;
+    gap: 8px;
+  }
+
+  .hf-badge {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2a2a2a;
+    border: 1px solid #1a1a1a;
+    padding: 5px 12px;
+  }
+
+  .hf-legal-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .hf-legal-links a {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2a2a2a;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .hf-legal-links a:hover { color: #7a7a7a; }
+
+  @media (max-width: 640px) {
+    .hf-top { grid-template-columns: 1fr; gap: 36px; padding: 48px 24px 40px; }
+    .hf-mid { flex-direction: column; align-items: flex-start; padding: 32px 24px; }
+    .hf-newsletter { flex-direction: column; width: 100%; }
+    .hf-email-input { width: 100%; border-right: 1px solid #2a2a2a; }
+    .hf-bottom { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+<h2 class="sr-only">Hopreneur Web Services footer with navigation, contact info, newsletter signup, and legal links</h2>
+
+<footer class="hf">
+
+  <div class="hf-top">
+
+    <div>
+      <div class="hf-brand-name">Hopreneur<span>.</span></div>
+      <p class="hf-brand-desc">Building websites for small businesses and entrepreneurs that are built to last and built to work.</p>
+      <div class="hf-socials">
+        <a class="hf-social" title="Instagram" aria-label="Instagram"><i class="ti ti-brand-instagram" aria-hidden="true"></i></a>
+        <a class="hf-social" title="LinkedIn" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>
+        <a class="hf-social" title="Twitter / X" aria-label="X / Twitter"><i class="ti ti-brand-x" aria-hidden="true"></i></a>
+        <a class="hf-social" title="Facebook" aria-label="Facebook"><i class="ti ti-brand-facebook" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <div>
+      <div class="hf-col-title">Services</div>
+      <ul class="hf-links">
+        <li><a href="#"><i class="ti ti-layout" aria-hidden="true"></i>Landing Pages</a></li>
+        <li><a href="#"><i class="ti ti-world" aria-hidden="true"></i>Full Websites</a></li>
+        <li><a href="#"><i class="ti ti-brand-wordpress" aria-hidden="true"></i>WordPress</a></li>
+        <li><a href="#"><i class="ti ti-square" aria-hidden="true"></i>Squarespace</a></li>
+        <li><a href="#"><i class="ti ti-shopping-cart" aria-hidden="true"></i>E-Commerce</a></li>
+        <li><a href="#"><i class="ti ti-refresh" aria-hidden="true"></i>Redesigns</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="hf-col-title">Company</div>
+      <ul class="hf-links">
+        <li><a href="#"><i class="ti ti-user" aria-hidden="true"></i>About</a></li>
+        <li><a href="#"><i class="ti ti-list-check" aria-hidden="true"></i>Process</a></li>
+        <li><a href="#"><i class="ti ti-writing" aria-hidden="true"></i>Blog</a></li>
+        <li><a href="#"><i class="ti ti-file-invoice" aria-hidden="true"></i>Get a Quote</a></li>
+        <li><a href="#"><i class="ti ti-mail" aria-hidden="true"></i>Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="hf-col-title">Contact</div>
+      <div>
+        <div class="hf-contact-item">
+          <span class="hf-contact-label">Email</span>
+          <a href="mailto:hello@hopreneur.com" class="hf-contact-val">hello@hopreneur.com</a>
+        </div>
+        <div class="hf-contact-item">
+          <span class="hf-contact-label">Location</span>
+          <span class="hf-contact-val">Toronto, Canada</span>
+        </div>
+        <div class="hf-contact-item">
+          <span class="hf-contact-label">Hours</span>
+          <span class="hf-contact-val">Mon – Fri, 9am – 6pm</span>
+        </div>
+        <div class="hf-contact-item">
+          <span class="hf-contact-label">Response Time</span>
+          <span class="hf-contact-val">Within 24 Hours</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hf-mid">
+    <div class="hf-mid-left">
+      <div class="hf-mid-label">Stay in the loop</div>
+      <div class="hf-mid-text">Web tips & updates, no spam.</div>
+    </div>
+    <div class="hf-newsletter">
+      <input type="email" class="hf-email-input" placeholder="your@email.com">
+      <button class="hf-email-btn">Subscribe →</button>
+    </div>
+  </div>
+
+  <div class="hf-bottom">
+    <div class="hf-copy">© 2025 Hopreneur Web Services. All rights reserved.</div>
+    <div class="hf-badges">
+      <span class="hf-badge">WordPress Expert</span>
+      <span class="hf-badge">Squarespace Partner</span>
+    </div>
+    <div class="hf-legal-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+
+</footer>
