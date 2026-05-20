@@ -174,7 +174,7 @@ class hopQuery{
 
                 ob_start();
                 ?>
-                <article class="blog-card reveal">
+                <article class="blog-card reveal visible">
                     <div class="card-image"
 
                     style="background-image: url('<?php echo $thumbnail; ?>');"

@@ -40,6 +40,9 @@ initialCards.forEach(card => {
   GridCards.allCards.push(card.cloneNode(true));
 });
 
+console.log(GridCards.allCards);
+
+// Pushing cards into view
 function addView(category, allCards, featured = '') {
   const cards = [];
 
@@ -52,8 +55,15 @@ function addView(category, allCards, featured = '') {
 
 
 function fetchData(value) {
-  if (value === 'all') {
-    showFilter(GridCards.allCards, true);
+  if (value === "All") {
+    console.log("hit");
+    showFilter(GridCards.allCards, true, value);
+    return;
+  }
+  const cached = GridCards.cache.find(item => item.category === value);
+
+  if (cached) {
+    showFilter(cached.allCards, true, value);
     return;
   }
 
@@ -66,18 +76,19 @@ function fetchData(value) {
   )
   .then(res => res.json())
   .then(data => {
-    showFilter(data, false);
+    showFilter(data, false, value);
   });
 }
 
-function showFilter(data, exists = false) {
+function showFilter(data, exists = false, value) {
   const cardGrid = containers.cardGrid;
 
   if (exists) {
-    containers.featured.style.display = "block";
+    containers.featured.style.display = "grid";
     cardGrid.innerHTML = "";
 
     data.forEach(card => {
+      card.classList.add('visible');
       cardGrid.appendChild(card);
     });
 
@@ -93,7 +104,7 @@ function showFilter(data, exists = false) {
     const img = value.thumbnail_url ?? "";
 
     html += `
-      <article class="blog-card">
+      <article class="blog-card visible">
         <div class="card-image"
           style="background-image: url('${img}');
                  background-size: cover;
@@ -117,6 +128,9 @@ function showFilter(data, exists = false) {
       </article>
     `;
   });
-
+  const temp = document.createElement("div");
+  temp.innerHTML = html;
+  const nodes = Array.from(temp.children);
+  addView(value, nodes);
   cardGrid.innerHTML = html;
 }
