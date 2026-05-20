@@ -12,7 +12,9 @@ class hopQuery{
 
     public function loadBlog(){
         if(is_page('blog')){
-            add_action('returnPosts');
+            add_action('FormatFeatured', [$this, 'formatFeatured']);
+            add_action('FormatRecent', [$this, 'formatRecent']);
+            add_action('returnMostRead', [$this, 'returnMostRead']);
         }
     }
 

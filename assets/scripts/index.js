@@ -10,7 +10,7 @@
  
   reveals.forEach(el => observer.observe(el));
 
-
+ 
 
 class noteAppend{
     title;
@@ -115,3 +115,5 @@ document.addEventListener('click', (e) => {
     main.classList.remove('blur');
   }
 })
+
+

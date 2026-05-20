@@ -115,10 +115,18 @@ class boot{
         wp_register_style('blog', STYLES_URI . '/blog.css');
         wp_register_style('404', STYLES_URI . '/404.css');
         wp_register_style('single', STYLES_URI . '/single.css');
-        wp_register_script('index', SCRIPTS_URI . '/index.js', [], null, true);
+        wp_register_script(
+                    'tsparticles',
+                    'https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js',
+                    [],
+                    null,
+                    true
+        );
+        wp_register_script('index', SCRIPTS_URI . '/index.js', ['tsparticles'], null, true);
         wp_register_script('form', SCRIPTS_URI . '/form.js', [], null, true);
         wp_register_script('blog', SCRIPTS_URI . '/blog.js' , [], null, true);
         wp_register_script('single', SCRIPTS_URI . '/single.js', [], null, true);
+       
     }
 
     public function note_callback($post){
@@ -152,9 +160,8 @@ class boot{
             wp_reset_postdata();
 
             $send = wp_json_encode($array);
-
             wp_enqueue_script('index');
-
+           
             wp_add_inline_script(
                 'index',
                 'const notesData = ' . $send . ';',
@@ -166,14 +173,6 @@ class boot{
             wp_enqueue_style('form');
             $nonce = wp_create_nonce('form_nonce');
             wp_enqueue_script('form');
-            wp_enqueue_script(
-                    'tsparticles',
-                    'https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js',
-                    [],
-                    null,
-                    true
-            );
-
             wp_add_inline_script( 
                 'form', 
                 'const nonce = ' . $nonce .  ';', 
