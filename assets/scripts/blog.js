@@ -2,6 +2,7 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      console.log(btn.innerHTML);
     });
   });
  
@@ -19,7 +20,8 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 
 
 function fetch(name, url){
-  // use the fetch object over here to return the post items
+  // use the fetch object over here to return the post items as an object 
+  // we can make a class to emulate this as well
 }
 
 

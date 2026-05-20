@@ -12,13 +12,11 @@
     <?php body_class(); ?>
 <nav>
   <div class="nav-logo">Hopreneur<span>.</span></div>
-   <?php wp_nav_menu(
-    [
-      'theme_location' => 'primary',
-      'menu_class' => 'nav-links'
-    ]
-   );
-   ?>
+   <ul class="nav-links">
+    <li><a href="<?php echo home_url('/'); ?>">Home</a></li>
+    <li><a href="<?php echo home_url('/blog'); ?>">Blog</a></li>
+
+   </ul>
   <?php if(is_home()){
     ?>
     <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>

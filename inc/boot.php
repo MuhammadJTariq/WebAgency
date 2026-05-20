@@ -66,11 +66,28 @@ class boot{
             'show_in_menu' => true,
             'show_in_rest' => true,
             'publicly_queryable' => false,
+            'has_archive' => false,
             'supports' => [
                 'title', 
                 'editor'
             ],
             'menu_icon' => 'dashicons-media-text'
+        ]);
+
+        register_post_type('project', [
+            'label' => 'Projects',
+            'public' => true,
+            'show_in_menu' => true,
+            'show_in_rest' => true,
+            'publicly_queryable' => false, 
+            'has_archive' => false,
+            'supports' => [
+                'title', 
+                'excerpt',
+                'thumbnail',
+                'editor'
+            ],
+            "menu_con" => 'dashicons-media-text'
         ]);
         add_rewrite_rule(
                 '^contactform/?$',
