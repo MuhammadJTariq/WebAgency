@@ -3,13 +3,6 @@
 
 <!-- PAGE HEADER -->
 <header class="page-header">
-  <div class="breadcrumb">
-    <a href="/">Home</a>
-    <span>/</span>
-    <a href="/blog">Blog</a>
-    <span>/</span>
-    <span style="color: var(--gray-dark);">Archive</span>
-  </div>
   <div class="page-header-inner">
     <div>
       <div class="page-tag">Full Post Archive</div>
@@ -47,12 +40,7 @@
   
  
 <!-- YEAR NAV -->
-<nav class="year-nav" aria-label="Browse by year">
-  <button class="year-btn active" onclick="filterYear('all')">All Years <span class="year-count">47</span></button>
-  <button class="year-btn" onclick="filterYear('2025')">2025 <span class="year-count">18</span></button>
-  <button class="year-btn" onclick="filterYear('2024')">2024 <span class="year-count">21</span></button>
-  <button class="year-btn" onclick="filterYear('2023')">2023 <span class="year-count">8</span></button>
-</nav>
+
  
 <!-- ARCHIVE LAYOUT -->
 <div class="archive-layout">
