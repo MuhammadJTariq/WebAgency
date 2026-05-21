@@ -130,6 +130,7 @@ class boot{
                     true
         );
         wp_register_style('archive', STYLES_URI . '/archive.css');
+        wp_register_style('single-all', STYLES_URI . '/single-all.css');   
         wp_register_script('archive', SCRIPTS_URI . '/archive.js');
         wp_register_script('index', SCRIPTS_URI . '/index.js', ['tsparticles'], null, true);
         wp_register_script('form', SCRIPTS_URI . '/form.js', [], null, true);
@@ -223,10 +224,7 @@ class boot{
                 );
             }
             if(is_singular('project')){
-                 wp_enqueue_style(
-                    'single-all',
-                    STYLES_URI . '/single-all.css'
-                );
+                 wp_enqueue_style('single-all');
             }
         if(is_404()){
             wp_enqueue_style('404');
@@ -234,7 +232,7 @@ class boot{
         }
 
         if(is_page() && !is_page('blog')){
-            wp_enqueue_style('single');
+            wp_enqueue_style('single-all');
         }
 
         if(is_archive()){

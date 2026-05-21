@@ -68,11 +68,11 @@ if(have_posts()){
     <!-- TAGS -->
     <div class="post-tags">
       <span class="tags-label">Tags</span>
-      <a href="#" class="tag">WordPress</a>
-      <a href="#" class="tag">Performance</a>
-      <a href="#" class="tag">Speed</a>
-      <a href="#" class="tag">Hosting</a>
-      <a href="#" class="tag">Plugins</a>
+      <?php $tags = get_the_tags(); 
+      foreach($tags as $tag){
+        echo '<a href="'. get_tag_link($tag->term_id) . '" class="tag">'. esc_html( $tag->name ) . '</a>';
+      }
+      ?>
     </div>
  
     <!-- SHARE -->
@@ -97,18 +97,7 @@ if(have_posts()){
       <div>
         <div class="sidebar-block-title">Related Posts</div>
         <div class="related-list">
-          <a href="#" class="related-item">
-            <div class="related-cat">WordPress · Apr 18</div>
-            <div class="related-title">The Plugins I Install on Every WordPress Site</div>
-          </a>
-          <a href="#" class="related-item">
-            <div class="related-cat">Tips & Tricks · Mar 22</div>
-            <div class="related-title">Basic SEO Every Website Needs at Launch</div>
-          </a>
-          <a href="#" class="related-item">
-            <div class="related-cat">Business · Mar 5</div>
-            <div class="related-title">How Much Should a Website Actually Cost?</div>
-          </a>
+          <?php buildRelate::relatedPosts(get_the_ID(), [], get_the_category( get_the_ID() )); ?>
         </div>
       </div>
  
@@ -137,24 +126,7 @@ if(have_posts()){
 <section class="more-posts">
   <div class="more-posts-header">More Articles</div>
   <div class="more-posts-grid">
- 
-    <a href="#" class="more-card">
-      <div class="more-card-cat"><span>Landing Pages</span><span>Apr 10</span></div>
-      <h3>The Anatomy of a Landing Page That Actually Converts</h3>
-      <p>Most landing pages fail for the same five reasons. Here's the structure that moves visitors to action.</p>
-    </a>
- 
-    <a href="#" class="more-card">
-      <div class="more-card-cat"><span>Business</span><span>Mar 5</span></div>
-      <h3>How Much Should a Website Actually Cost?</h3>
-      <p>The range is wild — here's what separates a cheap site from a valuable one, and where money actually goes.</p>
-    </a>
- 
-    <a href="#" class="more-card">
-      <div class="more-card-cat"><span>Tips & Tricks</span><span>Feb 3</span></div>
-      <h3>5 Signs It's Time to Redesign Your Website</h3>
-      <p>Most businesses wait too long. If your site is doing any of these five things, it's costing you.</p>
-    </a>
+    <?php buildRelate::relatedPosts(get_the_ID(), get_the_tags(), []); ?>
  
   </div>
 </section>
