@@ -10,7 +10,14 @@
  
   reveals.forEach(el => observer.observe(el));
 
- 
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.from(".nav-cta", {
+  scrollTrigger: ".section",
+  opacity: 0,
+  y: 100,
+  duration: 1
+});
 
 class noteAppend{
     title;
