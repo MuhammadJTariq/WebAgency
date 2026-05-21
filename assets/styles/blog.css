@@ -199,6 +199,7 @@
   /* BLOG GRID */
   .blog-grid-section {
     padding: 70px 60px;
+    position:relative;
   }
  
   .blog-grid {
@@ -526,6 +527,39 @@
     background: var(--white);
     border-color: var(--white);
   }
+
+
+.loader{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width:80%;
+    height:20px;
+    border:1px solid white;
+    z-index:1001;
+    transition: opacity 0.4s ease;
+
+}
+
+.loader.hide{
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader.reveal{
+  opacity: 1;
+  visibility:visible;
+}
+
+
+.bar{
+    width:100%;
+    height:100%;
+    background:blue;
+    transform:scaleX(0);
+    transform-origin:left center;
+}
 
   @media (max-width:800px) {
     .blog-grid{

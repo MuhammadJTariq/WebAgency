@@ -37,15 +37,37 @@ const containers = {
   cardGrid : document.querySelector(".blog-grid")
 }
 
+function animateLoader(){
+  const loader = document.querySelector(".loader");
+  const bar = document.querySelector(".bar");
+  loader.classList.remove("hide");
+  loader.classList.add("visible");
+
+  gsap.to(bar, {
+    scaleX: 1,
+    duration: 3,
+    ease: "power2.out",
+  onComplete: () => {
+    loader.classList.remove("visible");
+    loader.classList.add("hide");
+    // over here set the bar to zero 
+
+  }
+});
+
+}
+
 
 function fetchData(value) {
   if(value === "All"){
     containers.featured.style.display = "grid";
+    animateLoader();
     containers.cardGrid.innerHTML = GridCards.allCardsHTML;
     return;
   }
   if(GridCards.cache[value]){
     containers.featured.style.display = "none";
+    animateLoader();
     containers.cardGrid.innerHTML = GridCards.cache[value];
   }
 
