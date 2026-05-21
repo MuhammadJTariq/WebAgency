@@ -42,9 +42,7 @@
       <div>
         <div class="hf-contact-item">
           <span class="hf-contact-label">Email</span>
-          <a href="mailto:muhammad.tws49@gmail.com" class="hf-contact-val">
-            muhammad.tws49@gmail.com
-          </a>
+          <a href="mailto:hello@hopreneur.com" class="hf-contact-val">hello@hopreneur.com</a>
         </div>
         <div class="hf-contact-item">
           <span class="hf-contact-label">Location</span>
@@ -63,16 +61,38 @@
 
   </div>
 
-  <div class="hf-mid">
-    <div class="hf-mid-left">
-      <div class="hf-mid-label">Stay in the loop</div>
-      <div class="hf-mid-text">Web tips & updates, no spam.</div>
+
+    <div id="mc_embed_signup">
+    <form action="https://englishaccessvirtual.us13.list-manage.com/subscribe/post?u=6dd9a2693801375b334b9176b&amp;id=dbe5e7b8ce&amp;f_id=00f300e9f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+        <div id="mc_embed_signup_scroll">
+          <div class="input-area">
+            <h2>Subscribe</h2>
+            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+            <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input class="email-input" type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
+            <div id="mce-responses" class="clear foot">
+            <div class="response" id="mce-error-response" style="display: none;"></div>
+            <div class="response" id="mce-success-response" style="display: none;"></div>
+            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+          </div>
+          </div>
+      <div aria-hidden="true" style="position: absolute; left: -5000px;">
+        /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+        <input type="text" name="b_6dd9a2693801375b334b9176b_dbe5e7b8ce" tabindex="-1" value="">
+       </div>
+        <div class="optionalParent">
+            <div class="clear foot">
+                <p class="img-refer" style="margin: 0px auto;">
+                  <a href="http://eepurl.com/i9CoM2" title="Mailchimp - email marketing made easy and fun">
+                  <span style="display: inline-block; background-color: white; border-radius: 4px;">
+                    <img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg" alt="Intuit Mailchimp" style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;">
+                  </span>
+                </a>
+              </p>
+            </div>
+        </div>
     </div>
-    <div class="hf-newsletter">
-      <input type="email" class="hf-email-input" placeholder="your@email.com">
-      <button class="hf-email-btn">Subscribe →</button>
-    </div>
-  </div>
+</form>
+</div>
 
   <div class="hf-bottom">
     <div class="hf-copy">© 2025 Hopreneur Web Services. All rights reserved.</div>

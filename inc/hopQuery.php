@@ -194,7 +194,7 @@ class hopQuery{
                         </p>
                         <div class="card-footer">
                         <span class="read-time"><?php echo self::get_reading_time(get_the_ID()); ?> min</span>
-                        <a href="#" class="card-link">Read</a>
+                        <a href="<?php echo get_the_permalink(); ?>" class="card-link">Read</a>
                         </div>
                     </div>
                     </article>

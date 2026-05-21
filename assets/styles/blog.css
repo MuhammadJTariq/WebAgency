@@ -538,4 +538,14 @@
     .list-section{
       grid-template-columns: 1fr;
     }
+
+    .newsletter{
+      display: block;
+    }
+  }
+
+  @media (max-width:700px){
+    .blog-grid{
+      grid-template-columns: 1fr;
+    }
   }
