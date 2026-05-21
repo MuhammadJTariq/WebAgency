@@ -21,50 +21,32 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   reveals.forEach(el => obs.observe(el));
 
 
-console.log(nonce);
-console.log(url);
-
-const GridCards = {
-  allCards: [],
-  cache: []
-};
-
-const containers = {
-  'featured' : document.querySelector(".featured"),
-  'cardGrid' : document.querySelector(".blog-grid")
+const wpValues =  {
+  nonce : nonce,
+  url : url
 }
 
-const initialCards = document.querySelectorAll(".blog-card");
+const GridCards = {
+  allCardsHTML: document.querySelector(".blog-grid").innerHTML,
+  cache: {},
+};
 
-initialCards.forEach(card => {
-  GridCards.allCards.push(card.cloneNode(true));
-});
 
-console.log(GridCards.allCards);
-
-// Pushing cards into view
-function addView(category, allCards, featured = '') {
-  const cards = [];
-
-  allCards.forEach(card => {
-    cards.push(card.cloneNode(true));
-  });
-
-  GridCards.cache.push({ category, featured, allCards: cards });
+const containers = {
+  featured : document.querySelector(".featured"),
+  cardGrid : document.querySelector(".blog-grid")
 }
 
 
 function fetchData(value) {
-  if (value === "All") {
-    console.log("hit");
-    showFilter(GridCards.allCards, true, value);
+  if(value === "All"){
+    containers.featured.style.display = "grid";
+    containers.cardGrid.innerHTML = GridCards.allCardsHTML;
     return;
   }
-  const cached = GridCards.cache.find(item => item.category === value);
-
-  if (cached) {
-    showFilter(cached.allCards, true, value);
-    return;
+  if(GridCards.cache[value]){
+    containers.featured.style.display = "none";
+    containers.cardGrid.innerHTML = GridCards.cache[value];
   }
 
   return fetch(
@@ -81,22 +63,9 @@ function fetchData(value) {
 }
 
 function showFilter(data, exists = false, value) {
-  const cardGrid = containers.cardGrid;
-
-  if (exists) {
-    containers.featured.style.display = "grid";
-    cardGrid.innerHTML = "";
-
-    data.forEach(card => {
-      card.classList.add('visible');
-      cardGrid.appendChild(card);
-    });
-
-    return;
-  }
-
+ 
   containers.featured.style.display = "none";
-  cardGrid.innerHTML = "";
+  containers.cardGrid.innerHTML = "";
 
   let html = "";
 
@@ -128,9 +97,6 @@ function showFilter(data, exists = false, value) {
       </article>
     `;
   });
-  const temp = document.createElement("div");
-  temp.innerHTML = html;
-  const nodes = Array.from(temp.children);
-  addView(value, nodes);
-  cardGrid.innerHTML = html;
+  GridCards.cache[value] = html;
+  containers.cardGrid.innerHTML = html;
 }

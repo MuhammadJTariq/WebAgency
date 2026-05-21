@@ -51,7 +51,7 @@
     <div class="sidebar-block">
       <div class="sidebar-title">Browse by Topic</div>
       <div class="topic-list">
-        <?php do_action('returnCats'); ?>
+        <?php  hopQuery::returnCats(); ?>
       </div>
     </div>
  

@@ -959,3 +959,9 @@ and also use the post_type to make this */
   pointer-events: none;
   background: transparent;
 }
+
+.page-header{
+  width: 80vw;
+    margin: auto;
+    padding: 4vw;
+}

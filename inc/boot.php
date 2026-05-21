@@ -79,7 +79,7 @@ class boot{
             'public' => true,
             'show_in_menu' => true,
             'show_in_rest' => true,
-            'publicly_queryable' => false, 
+            'publicly_queryable' => true, 
             'has_archive' => false,
             'supports' => [
                 'title', 

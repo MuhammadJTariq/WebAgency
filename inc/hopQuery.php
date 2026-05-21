@@ -260,17 +260,19 @@ class hopQuery{
         return;
     }
 
-    public function returnCats(){
+    public static function returnCats(){
         $categories = get_categories();
         foreach($categories as $category){
+        
             ?>
-              <a href="<?php echo $category->slug; ?>" class="topic-item">
+              <a href="<?php echo get_category_link($category->term_id); ?>" class="topic-item">
                 <span class="topic-name"><?php echo $category->name; ?></span>
                 <span class="topic-count"><?php echo $category->count; ?></span>
              </a>
 
 
-            <?
+            <?php
+          
         }
     }
     
