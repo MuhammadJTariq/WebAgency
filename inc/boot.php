@@ -219,10 +219,9 @@ class boot{
                     'const nonce = ' . wp_json_encode($nonce) . ';',
                     'after'
                 );
-
-            } else {
-
-                wp_enqueue_style(
+            }
+            if(is_singular('project')){
+                 wp_enqueue_style(
                     'single-all',
                     STYLES_URI . '/single-all.css'
                 );
@@ -232,7 +231,7 @@ class boot{
 
         }
 
-        if(is_page('single')){
+        if(is_page() && !is_page('blog')){
             wp_enqueue_style('single');
         }
     }
