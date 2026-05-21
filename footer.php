@@ -68,7 +68,9 @@
           <div class="input-area">
             <h2>Subscribe</h2>
             <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-            <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input class="email-input" type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
+            <div class="mc-field-group"><label for="mce-EMAIL">Email Address</label>
+            <input class="email-input" type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="">
+          </div>
             <div id="mce-responses" class="clear foot">
             <div class="response" id="mce-error-response" style="display: none;"></div>
             <div class="response" id="mce-success-response" style="display: none;"></div>

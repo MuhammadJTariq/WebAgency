@@ -22,6 +22,9 @@
   }
   
   ?>
+   <div class="loader hide">
+      <div class="bar"></div>
+  </div>
 
 </div>
  
@@ -29,9 +32,6 @@
 <?php do_action('FormatFeatured'); ?>
 <!-- BLOG GRID -->
 <section class="blog-grid-section">
-  <div class="loader hide">
-      <div class="bar"></div>
-  </div>
   <div class="blog-grid">
   
  

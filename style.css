@@ -917,7 +917,7 @@ and also use the post_type to make this */
     .hf-bottom { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
   }
 
-
+/*
 #tsparticles {
   position: fixed;
   inset: 0;
@@ -925,32 +925,59 @@ and also use the post_type to make this */
   pointer-events: none;
   background: transparent;
 }
-
+ */
   #mc_embed_signup{
-    clear:left; 
-    font:14px Helvetica,Arial,sans-serif; 
+    font-family:inherit;
     width: 80vw;
     margin:auto;
     padding:2vw;
+  
   }
 
+  #mc_embed_signup h2{
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #e8e8e8;
+    margin-bottom: 14px;
+
+  }
+
+  label[for='mce-EMAIL']{
+    font-size:1 rem;
+  }
+
+  .indicates-required{
+    display: none;
+  }
   #mc_embed_signup_scroll{
     display: flex;
     align-items: center;
+    gap:2vw;
+
+  }
+
+  @media (max-width: 800px) {
+    #mc_embed_signup_scroll{
+      display: block;
+    }
+    
   }
 
 #mc-embedded-subscribe{
-      background: transparent;
-    border: 1px solid var(--gray-mid);
-    color: var(--silver);
+    background: var(--silver-light);
+    border: 1px solid var(--silver-light);
+    color: var(--black);
     font-family: 'Oswald', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    padding: 10px 24px;
+    padding: 14px 28px;
     cursor: pointer;
-    transition: all 0.25s;
-    font-weight: 400;
+    transition: all 0.2s;
+    white-space: nowrap;
 
 }
 
@@ -960,15 +987,26 @@ and also use the post_type to make this */
 
 }
 .input-area div{
-  padding:1vw;
+}
+
+.input-area div *{
+  margin-top:1vh;
+  margin-bottom:1vh;
 }
 
 .email-input{
-  width:100%;
-  background-color:var(--gray-mid);
-  padding:1vw;
-  color:var(--accent);
-  border-color:var(--gray);
+    background: var(--dark);
+    border: 1px solid var(--gray-dark);
+    border-right: none;
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    padding: 14px 20px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
 }
 
 .optionalParent{
