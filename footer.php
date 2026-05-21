@@ -42,7 +42,9 @@
       <div>
         <div class="hf-contact-item">
           <span class="hf-contact-label">Email</span>
-          <a href="mailto:hello@hopreneur.com" class="hf-contact-val">hello@hopreneur.com</a>
+          <a href="mailto:muhammad.tws49@gmail.com" class="hf-contact-val">
+            muhammad.tws49@gmail.com
+          </a>
         </div>
         <div class="hf-contact-item">
           <span class="hf-contact-label">Location</span>

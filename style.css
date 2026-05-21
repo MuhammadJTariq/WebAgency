@@ -965,3 +965,15 @@ and also use the post_type to make this */
     margin: auto;
     padding: 4vw;
 }
+
+.wp-block-heading{
+  
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.02;
+    letter-spacing: 0.01em;
+    color: var(--white);
+    margin-bottom: 28px;
+  
+}

@@ -1,0 +1,83 @@
+
+.page-header{
+  width: 80vw;
+    margin: auto;
+    padding: 4vw;
+    border:1px solid rgba(0, 128, 255, 0.367);
+    
+}
+
+
+
+
+
+
+h1.wp-block-heading{
+  
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.02;
+    letter-spacing: 0.01em;
+    color: var(--white);
+    margin-bottom: 28px;
+  
+}
+h2.wp-block-heading{
+    font-size:2rem;
+}
+
+h3.wp-block-heading{
+    font-size:1.8rem;
+
+
+}
+
+ p{
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.9;
+    letter-spacing: 0.03em;
+    margin-bottom: 20px;
+  }
+
+.wp-block-list{
+    margin: 20px 0 20px 24px;
+}
+
+.wp-block-list li{
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.85;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    padding-left: 8px;
+}
+
+.wp-block-list li::marker{
+    color: var(--gray-dark);
+}
+
+.wp-block-list{
+    list-style: none;
+    padding-left: 0;
+    position: relative;
+    padding-left: 20px;
+}
+
+.wp-block-list li::before{
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gray-dark);
+    font-weight: 300;
+}
+
+hr{
+    border: none;
+    border-top: 1px solid #1a1a1a;
+    margin: 52px 0;
+
+}

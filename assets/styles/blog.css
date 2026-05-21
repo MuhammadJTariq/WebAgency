@@ -87,6 +87,7 @@
   /* FEATURED POST */
   .featured {
     display: grid;
+    width:100%;
     grid-template-columns: 1fr 1fr;
     border-bottom: 1px solid #1a1a1a;
   }
@@ -203,7 +204,7 @@
   .blog-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    gap: 2vw;
   }
  
   .blog-card {
@@ -524,4 +525,17 @@
   .newsletter-btn:hover {
     background: var(--white);
     border-color: var(--white);
+  }
+
+  @media (max-width:800px) {
+    .blog-grid{
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .featured{
+      grid-template-columns: 1fr;
+    }
+
+    .list-section{
+      grid-template-columns: 1fr;
+    }
   }

@@ -75,5 +75,6 @@
     <button class="newsletter-btn">Subscribe</button>
   </div>
 </section>
+
  
 <?php get_footer(); ?>
