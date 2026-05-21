@@ -44,11 +44,7 @@
     <span class="search-icon">Search</span>
     <input type="text" class="search-input" id="searchInput" placeholder="Type to filter posts…" autocomplete="off">
   </div>
-  <div class="view-toggle">
-    <button class="view-btn active" id="listViewBtn" onclick="setView('list')">≡ List</button>
-    <button class="view-btn" id="gridViewBtn" onclick="setView('grid')">⊞ Grid</button>
-  </div>
-</div>
+  
  
 <!-- YEAR NAV -->
 <nav class="year-nav" aria-label="Browse by year">

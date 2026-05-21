@@ -46,18 +46,14 @@
 <section class="services" id="services">
   <div class="section-label">What I Build</div>
   <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-num">01</div>
-      <div class="service-icon">⬛</div>
-      <h3>Landing Pages</h3>
-      <p>High-converting single pages built to capture leads, drive sales, and make a strong first impression. Every element earns its place.</p>
-    </div>
+    <a style="text-decoration: none" href="<?php echo home_url('/project/landing-pages/') ?>">
     <div class="service-card reveal">
       <div class="service-num">02</div>
       <div class="service-icon">▦</div>
       <h3>Full Websites</h3>
       <p>Multi-page websites with clean structure, fast load times, and a design that reflects your brand — built to grow with you.</p>
     </div>
+    </a>
     <div class="service-card reveal">
       <div class="service-num">03</div>
       <div class="service-icon">⊞</div>

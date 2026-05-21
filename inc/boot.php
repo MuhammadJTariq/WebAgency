@@ -129,6 +129,8 @@ class boot{
                     null,
                     true
         );
+        wp_register_style('archive', STYLES_URI . '/archive.css');
+        wp_register_script('archive', SCRIPTS_URI . '/archive.js');
         wp_register_script('index', SCRIPTS_URI . '/index.js', ['tsparticles'], null, true);
         wp_register_script('form', SCRIPTS_URI . '/form.js', [], null, true);
         wp_register_script('blog', SCRIPTS_URI . '/blog.js' , [], null, true);
@@ -233,6 +235,11 @@ class boot{
 
         if(is_page() && !is_page('blog')){
             wp_enqueue_style('single');
+        }
+
+        if(is_archive()){
+            wp_enqueue_style('archive');
+            wp_enqueue_script('archive');
         }
     }
 
