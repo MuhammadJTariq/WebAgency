@@ -12,7 +12,7 @@
  
   /* HERO */
   .post-hero {
-    padding: 130px 60px 0;
+    padding: 2vw;
     border-bottom: 1px solid #1a1a1a;
   }
  
@@ -645,6 +645,15 @@
   .post-sidebar{
     display: none;
   }
+  article {
+    padding:4vw
+}
 
+  
+}
 
+@media (max-width:700px){
+  .post-hero{
+    padding:4vw;
+}
 }

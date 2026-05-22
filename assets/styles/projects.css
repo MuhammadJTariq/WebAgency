@@ -321,3 +321,11 @@
     background: var(--white);
     transform: translateY(-1px);
   }
+
+@media (max-width:800px){
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap:2vw
+   
+  }
+}

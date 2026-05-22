@@ -923,7 +923,7 @@ and also use the post_type to make this */
 
 /** Mobile Menu Area **/
 .mobile-menu{
-  display: block;
+  display: none;
   position:sticky;
   top:0;
   left:0;
@@ -1068,7 +1068,9 @@ and also use the post_type to make this */
  
   /* MOBILE */
   @media (max-width: 768px) {
-    
+    .mobile-menu{
+      display: block;
+    }
      nav { display: none;}
     .hero { padding: 100px 24px 60px; }
     .services { padding: 80px 24px; }

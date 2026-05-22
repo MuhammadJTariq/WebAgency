@@ -1,10 +1,14 @@
 
 .page-header{
-  width: 60%;
-    margin: auto;
-    padding: 4vw;
-   
-    
+  width: 75%;
+  margin: auto;
+  padding: 4vw;
+}
+
+@media (max-width:800px){
+    .page-header{
+        width:100%
+}
 }
 
 

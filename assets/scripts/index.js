@@ -11,7 +11,24 @@ const observer = new IntersectionObserver((entries) => {
 
 reveals.forEach(el => observer.observe(el));
 
+const processSec = document.querySelector("#process");
+const stepborder = document.querySelector(".step[data-step='1']");
+const observer2 = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        stepborder.classList.add('border-active');
+        returnPopup(0);
+        
+      }
+      else {
+        stepborder.classList.remove('border-active');
+        returnPopup(1);
+        observer2.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
 
+observer2.observe(processSec);
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -89,24 +106,7 @@ notesData.forEach(note => {
   new noteAppend(note.title, note.content, note.step);
 })
 
-const processSec = document.querySelector("#process");
-const stepborder = document.querySelector(".step[data-step='1']");
-const observer2 = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        stepborder.classList.add('border-active');
-        returnPopup(0);
-        
-      }
-      else {
-        stepborder.classList.remove('border-active');
-        returnPopup(1);
-        observer2.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
 
-observer2.observe(processSec);
 
 
 
@@ -177,18 +177,7 @@ function moveCarousel(track, cards){
 })
 
 
-document.querySelector(".toggle").addEventListener("click", () => {
-  console.log('element clicked');
-  const ul = document.querySelector(".mobile-links ul");
-  if(ul.classList.contains('expand')){
-    ul.classList.remove('expand');
-  }
-  else{
-    ul.classList.add('expand');
-  }
 
-
-})
 
 function rollView(element){
   element.classList.add('expand');

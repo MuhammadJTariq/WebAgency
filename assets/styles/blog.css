@@ -94,7 +94,7 @@
  
   .featured-image {
     background: var(--charcoal);
-    min-height: 420px;
+    aspect-ratio: 4/2.5;
     position: relative;
     overflow: hidden;
     border-right: 1px solid #1a1a1a;
@@ -197,7 +197,7 @@
  
   /* BLOG GRID */
   .blog-grid-section {
-    padding: 70px 60px;
+    padding: 70px 60px; 
     position:relative;
   }
  
@@ -340,7 +340,7 @@
   .post-list {}
  
   .post-list-item {
-    display: grid;
+    /* display: grid; */
     grid-template-columns: 80px 1fr;
     gap: 24px;
     padding: 28px 0;
