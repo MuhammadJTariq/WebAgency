@@ -1,5 +1,9 @@
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
+
+
+const processSec = document.querySelector("#process");
+const reveals = document.querySelectorAll('.reveal');
+const stepborder = document.querySelector(".step[data-step='1']");
+const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
         setTimeout(() => entry.target.classList.add('visible'), i * 80);
@@ -7,9 +11,22 @@
       }
     });
   }, { threshold: 0.12 });
- 
-  reveals.forEach(el => observer.observe(el));
 
+reveals.forEach(el => observer.observe(el));
+
+const observer2 = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        stepborder.classList.add('border-active');
+        observer.unobserve(entry.target);
+      }
+      else {
+        stepborder.classList.remove('border-active');
+      }
+    });
+  }, { threshold: 0.12 });
+
+observer2.observe(processSec);
 gsap.registerPlugin(ScrollTrigger);
 
 gsap.from(".nav-cta", {
