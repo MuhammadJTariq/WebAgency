@@ -1,6 +1,4 @@
-const processSec = document.querySelector("#process");
 const reveals = document.querySelectorAll('.reveal');
-const stepborder = document.querySelector(".step[data-step='1']");
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -12,22 +10,19 @@ const observer = new IntersectionObserver((entries) => {
 
 reveals.forEach(el => observer.observe(el));
 
-const observer2 = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        stepborder.classList.add('border-active');
-        const step = document.querySelector(".step[data-step='1']");
-        returnPopup(step.dataset.step);
-        observer2.unobserve(entry.target);
-        
-      }
-      else {
-        stepborder.classList.remove('border-active');
-      }
-    });
-  }, { threshold: 0.5 });
+/*let isOpen = false;
+document.getElementById("process-btn").addEventListener("click", () =>{
+  if(!isOpen){
+    returnPopup(0);
+    isOpen = true;
+  }
+  else {
+    returnPopup(1);
+    isOpen = false;
+  }
 
-observer2.observe(processSec);
+} ); */
+
 gsap.registerPlugin(ScrollTrigger);
 
 gsap.from(".nav-cta", {
@@ -51,7 +46,7 @@ class noteAppend{
   }
 
   buildHead(){
-    let head = `<div class="card-steps hide" data-step="${this.step}">`;
+    let head = `<div class="card-steps" data-step="${this.step}">`;
     let body = '<div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 2rem 2.25rem; max-width: 640px; margin: 1rem auto;">';
     this.html += head;
     this.html += body;
@@ -64,9 +59,6 @@ class noteAppend{
     <div>
       <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 0 0 3px;">Step 01</p>
       <p style="font-size: 18px; font-weight: 500; margin: 0; color: var(--color-text-primary);">${this.title}</p>
-    </div>
-    <div class="button">
-      <button id="close">Close</button>
     </div>
   </div>`;
   this.html += top;
@@ -98,8 +90,8 @@ class noteAppend{
 
   }
   buildFinish(){
-    const body = document.querySelector('body');
-    body.insertAdjacentHTML('beforeend', this.html);
+    const sectionPopup = document.querySelector(".track")
+    sectionPopup.insertAdjacentHTML("afterbegin", this.html);
 
   }
 }
@@ -108,43 +100,87 @@ notesData.forEach(note => {
   new noteAppend(note.title, note.content, note.step);
 })
 
-const steps = document.querySelectorAll('.step');
+const processSec = document.querySelector("#process");
+const stepborder = document.querySelector(".step[data-step='1']");
+const observer2 = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        stepborder.classList.add('border-active');
+        returnPopup(0);
+        
+      }
+      else {
+        stepborder.classList.remove('border-active');
+        returnPopup(1);
+        observer2.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.09 });
 
-steps.forEach(step => {
-  step.addEventListener('click', (e) => {
-    console.log('clicked' ,  e.currentTarget.dataset.step);
-    let num = step.dataset.step;
-    returnPopup(num);
-    })
-  });
+observer2.observe(processSec);
+
 
 
 function returnPopup(step){
-  const main = document.querySelector("main");
-  const popups = document.querySelectorAll(".card-steps");
-    popups.forEach(popup => {
-      if(popup.dataset.step === step){
-        gsap.to(popups, {
-          scale: 1,
-          opacity:1,
-          x:"-50%",
-          y:"-50%",
-          duration: 1.5
+  if(step === 1){
+    const main = document.querySelector("main");
+    const popups = document.querySelector(".card-popup");
+    gsap.to(popups, {
+      opacity: 0,
+      duration: 0.5
+    }); 
+    main.classList.remove('blur');
 
-        });
-        main.classList.add('blur')
-        return;
-      }});
+  }
+  if(step === 0){
+    const main = document.querySelector("main");
+    const popups = document.querySelector(".card-popup");
+    const track = document.querySelector(".track");
+    const cards = document.querySelectorAll(".card-steps");
+    setTimeout(() => {
+      main.classList.add('blur');
+    }, 2000)
+    setTimeout(() => {
+      gsap.to(popups, {
+      scale: 1,
+      opacity: 1,
+      x: "-50%",
+      y: "-50%",
+      duration: 1.5
+    }); 
+    }, 2000);
+    moveCarousel(track, cards);
+   
+  }
+  
 }
 
-const close = document.querySelectorAll("#close");
 
-document.addEventListener('click', (e) => {
-  const main = document.querySelector("main");
-  if(e.target.matches('button')){
-    const popup = e.target.closest('.card-steps');
-    popup.style.opacity = 0;
-    main.classList.remove('blur');
-  }
-})
+let interval;
+let index = 0;
+
+function moveCarousel(track, cards){
+  clearInterval(interval);
+   gsap.to(track, {
+      xPercent: - 100 * index,
+      duration: 0.8,
+      ease : "power2.inOut"
+
+    });
+
+  interval = setInterval(() => {
+      index++;
+      
+      gsap.to(track, {
+      xPercent: - 100 * index,
+      duration: 0.8,
+      ease : "power2.inOut"
+
+    });
+    if(index >= cards.length - 1){
+        clearInterval(interval);
+      }
+
+}, 4000);
+}
 

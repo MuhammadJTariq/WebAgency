@@ -875,23 +875,36 @@ Tags: custom, clean, minimal, responsive
 
 /* Working on this right now make the background blur using Javascript 
 and also use the post_type to make this */
-.card-steps {
+
+.card-popup{
     position:fixed;
+    width:50%;
+    top:50%;
+    left:50%;
     box-sizing: border-box;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    scrollbar-width: thin;
+    overflow:hidden;
     border:var(--border-onhover);
     border-radius:1vw;
     max-height: 80vh;
-    top:50%;
-    left:50%;
-    z-index: 1001;
+    z-index: 10001;
     background-color: black;
     opacity: 0;
+}
+
+.track{
+  display: flex;
+  width:100%;
+  height:100%;
+}
+
+.card-steps {
+    flex : 0 0 100%;
+    height : 100%;
+
 
 
 }
+
 
   .card-content > *{
     margin-top:2vh;
