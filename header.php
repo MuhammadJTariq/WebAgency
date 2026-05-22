@@ -19,11 +19,20 @@
   echo '<div class="progress-bar" id="progress"></div>';
 }
 ?>
-<nav>
-  <div class="nav-logo">Hopreneur<span>.</span></div>
+<div class="menu-nav">
+
+   <nav class="desktop-menu">
+    <div class="nav-logo">Hopreneur<span>.</span></div>
    <ul class="nav-links">
-    <li><a href="<?php echo home_url('/'); ?>">Home</a></li>
-    <li><a href="<?php echo home_url('/blog'); ?>">Blog</a></li>
+    <?php 
+    $pages = get_pages();
+    foreach($pages as $page){
+      ?>
+      <li><a href="<?php echo get_permalink($page->ID);  ?>"><?php echo $page->post_title; ?></a></li>
+      <?
+    }
+
+    ?>
 
    </ul>
   <?php if(is_home()){
@@ -37,4 +46,41 @@
    <?php
   } 
   ?>
+   </nav>
+  <div class="mobile-menu">
+    <div class="toggle-box">
+    <input type="checkbox" id="checkbox">
+    <label for="checkbox" class="toggle">
+        <div class="bars" id="bar1"></div>
+        <div class="bars" id="bar2"></div>
+        <div class="bars" id="bar3"></div>
+    </label>
+    </div>
+    <div class="mobile-links">
+       <ul>
+    <?php 
+    $pages = get_pages();
+    foreach($pages as $page){
+      ?>
+      <li><a href="<?php echo get_permalink($page->ID);  ?>"><?php echo $page->post_title; ?></a></li>
+      <?
+    }
+
+    ?>
+    <?php if(is_home()){
+    ?>
+    <button class="nav-cta mobile" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+    <?php
+  }
+  else {
+    ?>
+   <a href="https://us13.list-manage.com/contact-form?u=6dd9a2693801375b334b9176b&form_id=088d88f24d4ae3778dff73a44e5261bb"><button class="nav-cta">Get a Quote</button></a>
+   <?php
+  } 
+  ?>
+
+   </ul>
+  </ul>
+    </div>
+  </div>
 </nav>

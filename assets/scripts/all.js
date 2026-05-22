@@ -1,0 +1,12 @@
+document.querySelector(".toggle").addEventListener("click", () => {
+  console.log('element clicked');
+  const ul = document.querySelector(".mobile-links ul");
+  if(ul.classList.contains('expand')){
+    ul.classList.remove('expand');
+  }
+  else{
+    ul.classList.add('expand');
+  }
+
+
+})

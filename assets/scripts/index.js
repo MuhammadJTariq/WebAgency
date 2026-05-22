@@ -1,4 +1,5 @@
-const reveals = document.querySelectorAll('.reveal');
+document.addEventListener("DOMContentLoaded", () => {
+  const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -10,18 +11,8 @@ const observer = new IntersectionObserver((entries) => {
 
 reveals.forEach(el => observer.observe(el));
 
-/*let isOpen = false;
-document.getElementById("process-btn").addEventListener("click", () =>{
-  if(!isOpen){
-    returnPopup(0);
-    isOpen = true;
-  }
-  else {
-    returnPopup(1);
-    isOpen = false;
-  }
 
-} ); */
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,7 +59,6 @@ class noteAppend{
 
   buildMain(){
     let mainTop = ' <div class="card-content" style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1.5rem;">';
-    let mainButton = '<button id="next-button">-></button>'
     let mainMiddle = this.content;
     let mainBottom = ` <div style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
       <p style="font-size: 12px; color: var(--color-text-tertiary); margin: 0; letter-spacing: 0.05em;">Included with every project</p>
@@ -77,7 +67,6 @@ class noteAppend{
       </button>
     </div>`;
     this.html += mainTop;
-    this.html += mainButton;
     this.html += mainMiddle;
     this.html += mainBottom;
     this.buildTail();
@@ -115,7 +104,7 @@ const observer2 = new IntersectionObserver((entries) => {
         observer2.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.09 });
+  }, { threshold: 0.12 });
 
 observer2.observe(processSec);
 
@@ -184,3 +173,23 @@ function moveCarousel(track, cards){
 }, 4000);
 }
 
+
+})
+
+
+document.querySelector(".toggle").addEventListener("click", () => {
+  console.log('element clicked');
+  const ul = document.querySelector(".mobile-links ul");
+  if(ul.classList.contains('expand')){
+    ul.classList.remove('expand');
+  }
+  else{
+    ul.classList.add('expand');
+  }
+
+
+})
+
+function rollView(element){
+  element.classList.add('expand');
+}

@@ -138,6 +138,7 @@ class boot{
         wp_register_script('blog', SCRIPTS_URI . '/blog.js' , [], null, true);
         wp_register_script('single', SCRIPTS_URI . '/single.js', [], null, true);
         wp_register_script('projects', SCRIPTS_URI . '/projects.js', [], null, true);
+        wp_register_script('all', SCRIPTS_URI . '/all.js', [], null, true);
        
     }
 
@@ -149,6 +150,7 @@ class boot{
 
     public function enqueue_scripts(){
         wp_enqueue_style('style');
+        wp_enqueue_script('all');
         if(is_home()){
             $query = new WP_Query([
                 'post_type' => 'note',
@@ -254,6 +256,8 @@ class boot{
         add_theme_support( 'title-tag' );
         add_theme_support('post-thumbnails');
         add_theme_support('alignwide');
+        add_theme_support('post-formats', ['video']);
+        add_theme_support('editor-styles');
         add_post_type_support( 'post', 'excerpt' );
         register_nav_menus([
             'primary' => 'Primary Menu'
