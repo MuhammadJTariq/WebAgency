@@ -875,7 +875,7 @@ Tags: custom, clean, minimal, responsive
 
 /* Working on this right now make the background blur using Javascript 
 and also use the post_type to make this */
-  .card-steps.visible{
+.card-steps {
     position:fixed;
     box-sizing: border-box;
     overflow-y: scroll;
@@ -886,15 +886,13 @@ and also use the post_type to make this */
     max-height: 80vh;
     top:50%;
     left:50%;
-    transform: translate(-50%, -50%);
     z-index: 1001;
     background-color: black;
-    display: block;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  }
-   .card-steps.hide{
-    display: none;
-  }
+    opacity: 0;
+
+
+}
+
   .card-content > *{
     margin-top:2vh;
     margin-bottom: 2vh;

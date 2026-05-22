@@ -18,6 +18,7 @@ const observer2 = new IntersectionObserver((entries) => {
         stepborder.classList.add('border-active');
         const step = document.querySelector(".step[data-step='1']");
         returnPopup(step.dataset.step);
+        observer2.unobserve(entry.target);
         
       }
       else {
@@ -75,6 +76,7 @@ class noteAppend{
 
   buildMain(){
     let mainTop = ' <div class="card-content" style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1.5rem;">';
+    let mainButton = '<button id="next-button">-></button>'
     let mainMiddle = this.content;
     let mainBottom = ` <div style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
       <p style="font-size: 12px; color: var(--color-text-tertiary); margin: 0; letter-spacing: 0.05em;">Included with every project</p>
@@ -83,6 +85,7 @@ class noteAppend{
       </button>
     </div>`;
     this.html += mainTop;
+    this.html += mainButton;
     this.html += mainMiddle;
     this.html += mainBottom;
     this.buildTail();
@@ -121,8 +124,14 @@ function returnPopup(step){
   const popups = document.querySelectorAll(".card-steps");
     popups.forEach(popup => {
       if(popup.dataset.step === step){
-        popup.classList.remove('hide');
-        popup.classList.add('visible');
+        gsap.to(popups, {
+          scale: 1,
+          opacity:1,
+          x:"-50%",
+          y:"-50%",
+          duration: 1.5
+
+        });
         main.classList.add('blur')
         return;
       }});
@@ -134,8 +143,7 @@ document.addEventListener('click', (e) => {
   const main = document.querySelector("main");
   if(e.target.matches('button')){
     const popup = e.target.closest('.card-steps');
-    popup.classList.remove('visible');
-    popup.classList.add('hide');
+    popup.style.opacity = 0;
     main.classList.remove('blur');
   }
 })
