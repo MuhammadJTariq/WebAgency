@@ -104,15 +104,11 @@
  
   /* HERO IMAGE */
   .post-hero-image {
-    width: 100%;
-    height: 420px;
-    background: var(--charcoal);
-    border-top: 1px solid #1a1a1a;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  aspect-ratio: 4/2;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
   }
  
   .post-hero-image svg {
@@ -634,3 +630,21 @@
     line-height: 1.7;
     letter-spacing: 0.02em;
   }
+
+@media (max-width:900px) {
+  .post-hero-inner{
+    display: block;
+  }
+  .post-meta-panel{
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .post-body{
+    display: block;
+  }
+  .post-sidebar{
+    display: none;
+  }
+
+
+}

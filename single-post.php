@@ -6,6 +6,8 @@ if(have_posts()){
   while(have_posts()){
     the_post();
     $cat = get_the_category( get_the_ID() );
+    $thumbnail = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+
 
     ob_start();
     ?>
@@ -45,15 +47,22 @@ if(have_posts()){
     </div>
   </div>
    <!-- HERO IMAGE -->
-  <div class="post-hero-image"
-  style="background-image:url('<?php echo get_the_post_thumbnail_url( get_the_ID(), 'full' ); ?> ')";
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  
-  >
+  <?php if($thumbnail){
+    ?>
+    <div class="post-hero-image"
+    style="background-image:url('<?php echo $thumbnail ?>')">
     
-  </div>
+    </div>
+
+
+    <?
+
+  }
+  else {
+    
+
+  }
+  ?>
 </header>
    
 <!-- BODY -->
@@ -68,9 +77,16 @@ if(have_posts()){
     <!-- TAGS -->
     <div class="post-tags">
       <span class="tags-label">Tags</span>
-      <?php $tags = get_the_tags(); 
-      foreach($tags as $tag){
-        echo '<a href="'. get_tag_link($tag->term_id) . '" class="tag">'. esc_html( $tag->name ) . '</a>';
+
+      <?php
+      $tags = get_the_tags();
+
+      if ($tags) {
+        foreach ($tags as $tag) {
+          echo '<a href="' . esc_url(get_tag_link($tag->term_id)) . '" class="tag">'
+            . esc_html($tag->name) .
+          '</a>';
+        }
       }
       ?>
     </div>
