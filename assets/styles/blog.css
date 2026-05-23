@@ -200,13 +200,17 @@
     padding: 70px 60px; 
     position:relative;
   }
+
+
  
   .blog-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2vw;
+    
+   
   }
- 
+
   .blog-card {
     background: var(--charcoal);
     border: 1px solid #1e1e1e;
