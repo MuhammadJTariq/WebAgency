@@ -131,26 +131,26 @@
  
 <!-- PROCESS -->
 <section class="process" id="process">
-  <div class="process-header reveal">
+  <div class="process-header">
     <h2>How It Works</h2>
   </div>
   <div class="process-steps">
-    <div class="step reveal" data-step="1">
+    <div class="step" data-step="1">
       <div class="step-num">01</div>
       <h3>Discovery</h3>
       <p>We talk about your business, goals, and what you need your site to actually do. No assumptions.</p>
     </div>
-    <div class="step reveal" data-id="proposal">
+    <div class="step" data-id="proposal">
       <div class="step-num">02</div>
       <h3>Proposal</h3>
       <p>You get a clear scope, timeline, and flat-rate quote. No hidden fees, no hourly surprises.</p>
     </div>
-    <div class="step reveal" data-id="Build">
+    <div class="step" data-id="Build">
       <div class="step-num">03</div>
       <h3>Build</h3>
       <p>I build it, you review it. Two rounds of revisions included — we get it right together.</p>
     </div>
-    <div class="step reveal" data-id="launch">
+    <div class="step" data-id="launch">
       <div class="step-num">04</div>
       <h3>Launch</h3>
       <p>Go live with confidence. I handle the technical side and walk you through managing your new site.</p>

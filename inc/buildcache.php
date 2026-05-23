@@ -15,17 +15,17 @@ class BuildCache {
     }
 
 }
-
+/*
 $values = new BuildCache();
 
 $path = THEME_DIR . '/inc/' . 'cache.txt';  
 
 $data = serialize($values);
 
-file_put_contents($path, $data, FILE_APPEND);
+file_put_contents($path, $data . "\n", FILE_APPEND);
 
 $values = file_get_contents($path);
 
 $user = unserialize($values);
 
-addtoLog($user);
+*/

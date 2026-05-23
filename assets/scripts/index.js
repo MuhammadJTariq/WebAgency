@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const reveals = document.querySelectorAll('.reveal');
+
+const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
         setTimeout(() => entry.target.classList.add('visible'), i * 80);
         observer.unobserve(entry.target);
       }
+      
+      
     });
   }, { threshold: 0.12 });
 
@@ -16,19 +19,22 @@ const stepborder = document.querySelector(".step[data-step='1']");
 const observer2 = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        stepborder.classList.add('border-active');
+        console.log("Intersected Proccess");
+        setTimeout(function(){
+          stepborder.classList.add('border-active');
+        }, 500);
         returnPopup(0);
         
       }
       else {
         stepborder.classList.remove('border-active');
         returnPopup(1);
-        observer2.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.04 });
 
 observer2.observe(processSec);
+
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -174,7 +180,7 @@ function moveCarousel(track, cards){
 }
 
 
-})
+});
 
 
 

@@ -262,7 +262,11 @@ class boot{
         register_nav_menus([
             'primary' => 'Primary Menu'
         ]);
+    }
 
+       
+
+    public function switchTheme(){
          global $wpdb;
 
         $table_4 = $wpdb->prefix . "most_read";
@@ -292,9 +296,7 @@ class boot{
         ) $charset_collate;";
 
         dbDelta($sql4);
-    }
-
-    public function switchTheme(){
+    
         flush_rewrite_rules();
     }
 
