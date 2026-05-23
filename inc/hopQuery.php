@@ -263,6 +263,9 @@ class hopQuery{
     public static function returnCats(){
         $categories = get_categories();
         foreach($categories as $category){
+            if($category->name === 'uncategorized'){
+                continue;
+            }
         
             ?>
               <a href="<?php echo get_category_link($category->term_id); ?>" class="topic-item">

@@ -29,6 +29,7 @@ const observer2 = new IntersectionObserver((entries) => {
       else {
         stepborder.classList.remove('border-active');
         returnPopup(1);
+        
       }
     });
   }, { threshold: 0.04 });

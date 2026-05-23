@@ -5,6 +5,10 @@
   padding: 4vw;
 }
 
+.page-header > * {
+    margin:2vw
+}
+
 @media (max-width:800px){
     .page-header{
         width:100%
@@ -38,7 +42,7 @@ h3.wp-block-heading{
  p{
     font-size: 0.95rem;
     font-weight: 300;
-    color: var(--gray);
+    color: #f8d9d9;
     line-height: 1.9;
     letter-spacing: 0.03em;
     margin-bottom: 20px;
@@ -83,3 +87,4 @@ hr{
     margin: 52px 0;
 
 }
+

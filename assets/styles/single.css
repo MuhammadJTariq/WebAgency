@@ -163,7 +163,7 @@
   .post-content p {
     font-size: 0.95rem;
     font-weight: 300;
-    color: var(--gray);
+    color: #cdcccc;
     line-height: 1.9;
     letter-spacing: 0.03em;
     margin-bottom: 20px;

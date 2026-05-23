@@ -17,10 +17,9 @@
   <?php $categories = get_categories(); 
   foreach($categories as $cat){
     ?>
-  <button class="filter-btn"><?php echo $cat->name; ?></button>
+    <button class="filter-btn"><?php echo $cat->name; ?></button>
     <?
   }
-  
   ?>
    <div class="loader hide">
       <div class="bar"></div>

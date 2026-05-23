@@ -512,7 +512,6 @@ Tags: custom, clean, minimal, responsive
     padding: 48px 36px;
     border-right: 1px solid #1e1e1e;
     position: relative;
-    transition:0.5s ease-in;
   }
 
    .step:hover{
@@ -528,6 +527,18 @@ Tags: custom, clean, minimal, responsive
   background-size: 300% 300%;
   animation: move 3s linear infinite;
   z-index: -1;
+  animation: reveal 0.5s ease-in;
+}
+
+@keyframes reveal{
+  0%{
+    opacity: 0;
+
+  }
+
+  100%{
+    opacity: 1;
+  }
 }
 
 @keyframes move {
