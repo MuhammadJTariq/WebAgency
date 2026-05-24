@@ -1078,7 +1078,7 @@ and also use the post_type to make this */
 
  
   /* MOBILE */
-  @media (max-width: 768px) {
+  @media (max-width: 800px) {
     .mobile-menu{
       display: block;
     }
@@ -1092,16 +1092,10 @@ and also use the post_type to make this */
     .process-steps { grid-template-columns: 1fr 1fr; }
     .platforms { padding: 80px 24px; }
     .cta-section { padding: 80px 24px; }
+    .hf-top { grid-template-columns: 1fr; gap: 36px; padding: 48px 24px 40px; }
   }
   
-    @media (max-width: 640px) {
-    .hf-top { grid-template-columns: 1fr; gap: 36px; padding: 48px 24px 40px; }
-    .hf-mid { flex-direction: column; align-items: flex-start; padding: 32px 24px; }
-    .hf-newsletter { flex-direction: column; width: 100%; }
-    .hf-email-input { width: 100%; border-right: 1px solid #2a2a2a; }
-    .hf-bottom { padding: 20px 24px; flex-direction: column; align-items: flex-start; }
-  }
-
+   
 /*
 #tsparticles {
   position: fixed;

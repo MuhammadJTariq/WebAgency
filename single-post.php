@@ -15,7 +15,7 @@ if(have_posts()){
       <div class="breadcrumb">
         <a href="<?php echo home_url('/blog'); ?>">Blog</a>
         <span>/</span>
-        <a href="<?php echo $cat[0]->slug; ?>"><?php echo $cat[0]->name; ?></a>
+        <a href="<?php echo get_category_link($cat[0]->term_id); ?>"><?php echo $cat[0]->name; ?></a>
         <span>/</span>
         <span style="color: var(--gray-dark);">Current Post</span>
     </div>

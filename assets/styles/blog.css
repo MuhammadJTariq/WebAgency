@@ -343,13 +343,12 @@
  
   .post-list {}
  
-  .post-list-item {
-    /* display: grid; */
-    grid-template-columns: 80px 1fr;
-    gap: 24px;
+   .post-list-item {
+    display : flex;
+    flex-direction : column;
+    flex-basis : 2vw;
     padding: 28px 0;
     border-bottom: 1px solid #1a1a1a;
-    align-items: start;
     text-decoration: none;
     transition: opacity 0.2s;
   }
@@ -360,7 +359,7 @@
   .post-num {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1e1e1e;
+    color: #996d6d;
     letter-spacing: -0.04em;
     line-height: 1;
   }
@@ -371,7 +370,7 @@
     font-size: 0.58rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: var(--gray-dark);
+    color: #a18b8b;
     margin-bottom: 6px;
   }
  

@@ -261,7 +261,7 @@
   .post-row-day {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #222;
+    color: #785f5f;
     line-height: 1;
     letter-spacing: -0.02em;
   }
@@ -270,7 +270,7 @@
     font-size: 0.58rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--gray-dark);
+    color: #7b6a6a;
   }
  
   .post-row-content {
@@ -608,8 +608,20 @@
 
 
 @media (max-width:800px){
-  .archive-layout{
-    grid-template-columns: 1fr;
-}
+  .post-row {
+    display:block;
+  }
+  .post-row-content {
+    padding:3vw;
+  }
+  .post-row-date {
+    padding:2vw;
+    width:min-content; 
+    margin: auto;
+    border-right: none;
+  }
+  .post-row-arrow {
+    padding:2vw;
+  }
   
 }

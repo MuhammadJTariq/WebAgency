@@ -41,22 +41,6 @@
 
             <div class="result-body">
 
-                <div class="result-cats">
-                    <?php
-                    $cats = get_the_category();
-                    if ($cats) {
-                        foreach ($cats as $c) {
-                            ?>
-                            <span class="result-cat">
-                                <a href="<?php echo get_category_link($c->term_id); ?>">
-                                    <?php echo esc_html($c->name); ?>
-                                </a>
-                            </span>
-                            <?php
-                        }
-                    }
-                    ?>
-                </div>
 
                 <div class="result-title">
                     <?php the_title(); ?>

@@ -67,6 +67,7 @@ class boot{
             'show_in_rest' => true,
             'publicly_queryable' => false,
             'has_archive' => false,
+            'exclude_from_search' => true,
             'supports' => [
                 'title', 
                 'editor'
@@ -81,6 +82,7 @@ class boot{
             'show_in_rest' => true,
             'publicly_queryable' => true, 
             'has_archive' => false,
+            'exlude_from_search' => true,
             'supports' => [
                 'title', 
                 'excerpt',
