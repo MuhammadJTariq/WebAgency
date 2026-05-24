@@ -1,11 +1,16 @@
 
 .page-header{
-  width: 75%;
+  width: 100%;
   margin: auto;
   padding: 4vw;
   
 }
 
+.page-content{
+    width:80%;
+    background-color: black;
+    padding:4vw;
+}
 .page-header > * {
     margin:2vw
 }
