@@ -125,7 +125,15 @@ function returnPopup(step){
       opacity: 0,
       duration: 0.5
     }); 
+    const track = document.querySelector(".track");
     main.classList.remove('blur');
+     gsap.to(track, {
+      xPercent: 0,
+      duration: 0.8,
+      ease : "power2.inOut"
+
+    });
+
 
   }
   if(step === 0){
@@ -152,17 +160,12 @@ function returnPopup(step){
 }
 
 
-let interval;
-let index = 0;
+
 
 function moveCarousel(track, cards){
+  let interval;
+  let index = 0;
   clearInterval(interval);
-   gsap.to(track, {
-      xPercent: - 100 * index,
-      duration: 0.8,
-      ease : "power2.inOut"
-
-    });
 
   interval = setInterval(() => {
       index++;

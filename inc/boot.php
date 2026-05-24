@@ -89,6 +89,11 @@ class boot{
             ],
             "menu_con" => 'dashicons-media-text'
         ]);
+
+        $disable = ['project', 'note', 'post', 'page'];
+        foreach($disable as $dis){
+            remove_post_type_support($dis, 'comments');
+        }
         add_rewrite_rule(
                 '^contactform/?$',
                 'index.php?contactform=1',
@@ -115,7 +120,16 @@ class boot{
             return $vars;
             
         });
-
+        /*register_post_meta('post', 'headline', [
+                'type' => 'string', 
+                'single' => true, 
+                'show_in_rest' => true, 
+                'sanitize_callback' => 'sanitize_text_field',
+                'auth_callback' => function(){
+                    return current_user_can('edit_posts');
+                }
+            ]);
+            */
        
         wp_register_style('style', get_stylesheet_uri());
         wp_register_style('form', STYLES_URI . '/form.css');
@@ -132,6 +146,7 @@ class boot{
         wp_register_style('archive', STYLES_URI . '/archive.css');
         wp_register_style('single-all', STYLES_URI . '/single-all.css');  
         wp_register_style('projects', STYLES_URI . '/projects.css'); 
+        wp_register_style('search', STYLES_URI . '/search.css');
         wp_register_script('archive', SCRIPTS_URI . '/archive.js');
         wp_register_script('index', SCRIPTS_URI . '/index.js', ['tsparticles'], null, true);
         wp_register_script('form', SCRIPTS_URI . '/form.js', [], null, true);
@@ -247,6 +262,10 @@ class boot{
         if(is_archive()){
             wp_enqueue_style('archive');
             wp_enqueue_script('archive');
+        }
+
+        if(is_search()){
+            wp_enqueue_style('search');
         }
     }
 

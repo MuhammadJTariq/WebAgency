@@ -16,6 +16,9 @@
   <button class="filter-btn active">All</button>
   <?php $categories = get_categories(); 
   foreach($categories as $cat){
+    if($cat->name === 'uncategorized'){
+      continue;
+    }
     ?>
     <button class="filter-btn"><?php echo $cat->name; ?></button>
     <?
