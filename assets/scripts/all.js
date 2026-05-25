@@ -31,7 +31,17 @@ console.log(search);
 search.addEventListener("keydown", function(e){
   if(e.key === "enter"){
     e.preventDefault();
-    console.log("search triggered");
   }
  
 })
+
+
+/*
+#tsparticles {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  pointer-events: none;
+  background: transparent;
+}
+ */
