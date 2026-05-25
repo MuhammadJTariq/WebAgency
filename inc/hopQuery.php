@@ -13,7 +13,32 @@ class hopQuery{
     public function parse_query(){
         if(is_page('blog')){
             add_action('pre_get_posts', [$this, 'loadBlog']);
+            add_filter('the_content', [$this, 'content_filters']);
+            
         }
+    }
+
+    public function content_filters($content){
+        if(is_page('about-3')){
+            ob_start();
+            ?>
+            <div class="signature"
+            style="background-image: url('<?php echo esc_url(THEME_URI . '/images/signature.png');?>');
+                  background-size:cover;
+                  background-position:center;
+                  height:100vh;"
+            >
+
+            </div>
+
+
+            <?php
+
+            $img = ob_get_clean();
+            return $content . $img;
+        }
+
+        return $content;
     }
 
     public static function add_toc_headings($content) {

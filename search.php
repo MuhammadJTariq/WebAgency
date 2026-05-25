@@ -23,6 +23,16 @@
       >
       </form>
       <button class="search-clear" id="searchClear" aria-label="Clear search">Clear</button>
+      <script>
+        const search = document.getElementById("searchInput");
+
+            search.addEventListener("keydown", function(e){
+            if(e.key === "enter"){
+                e.preventDefault();
+            }
+            
+        })
+      </script>
     </div>
   </section>
 

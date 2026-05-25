@@ -7,7 +7,7 @@ window.addEventListener("load", function () {
       behavior: "smooth"
     });
   }
-});
+}); 
 
 
 document.querySelector(".toggle").addEventListener("click", () => {
@@ -24,24 +24,4 @@ document.querySelector(".toggle").addEventListener("click", () => {
 })
 
 
-const search = document.getElementById("searchInput");
 
-console.log(search);
-
-search.addEventListener("keydown", function(e){
-  if(e.key === "enter"){
-    e.preventDefault();
-  }
- 
-})
-
-
-/*
-#tsparticles {
-  position: fixed;
-  inset: 0;
-  z-index: 10001;
-  pointer-events: none;
-  background: transparent;
-}
- */

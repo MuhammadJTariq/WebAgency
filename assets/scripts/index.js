@@ -20,7 +20,6 @@ const processSec = document.querySelector("#process-sec");
 const stepborder = document.querySelector(".step[data-step='1']");
 
 processBtn.addEventListener("click", function(){
-  
     processSec.scrollIntoView({
         behavior: "smooth"
     });
