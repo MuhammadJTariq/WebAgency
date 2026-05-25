@@ -15,7 +15,7 @@ function display_header($wp_query){
         <div class="page-header-inner">
             <div>
             <div class="page-tag">Full Post Archive</div>
-            <h1>Every<br>Article.</h1>
+            <h1>Every<br><?php $category = get_queried_object(); echo $category->slug;  ?></h1>
             </div>
             <div class="header-right">
             <div class="post-count-big"><?php echo $wp_query->found_posts; ?></div>
@@ -30,23 +30,6 @@ function display_header($wp_query){
 
 
 ?>
-<!-- STATS ROW -->
-<div class="archive-stats reveal">
-  <div class="stat-cell">
-    <div class="stat-cell-num">47</div>
-    <div class="stat-cell-label">Total Articles</div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-cell-num">6</div>
-    <div class="stat-cell-label">Categories</div>
-  </div>
-  <div class="stat-cell">
-    <div class="stat-cell-num">3</div>
-    <div class="stat-cell-label">Years of Writing</div>
-  </div>
-</div>
- 
-<!-- CONTROLS BAR -->
 
 
 
@@ -102,66 +85,66 @@ function display_header($wp_query){
     <div class="sidebar-section">
       <div class="sidebar-section-title">Categories</div>
       <div class="cat-list">
-        <a href="#" class="cat-item active" onclick="filterCat(event,'all')"><span class="cat-name">All Posts</span><span class="cat-count">47</span></a>
-        <a href="#" class="cat-item" onclick="filterCat(event,'wordpress')"><span class="cat-name">WordPress</span><span class="cat-count">14</span></a>
-        <a href="#" class="cat-item" onclick="filterCat(event,'squarespace')"><span class="cat-name">Squarespace</span><span class="cat-count">9</span></a>
-        <a href="#" class="cat-item" onclick="filterCat(event,'landing pages')"><span class="cat-name">Landing Pages</span><span class="cat-count">7</span></a>
-        <a href="#" class="cat-item" onclick="filterCat(event,'tips')"><span class="cat-name">Tips & Tricks</span><span class="cat-count">10</span></a>
-        <a href="#" class="cat-item" onclick="filterCat(event,'business')"><span class="cat-name">Business</span><span class="cat-count">7</span></a>
+        <?php $cats = get_categories(); 
+          foreach($cats as $cat){
+          if($cat->name === 'Uncategorized'){
+
+          }
+          else {
+              ?>
+            <a href="<?php echo get_category_link($cat->term_id); ?>" class="cat-item active">
+              <span class="cat-name"><?php echo $cat->name; ?></span>
+              <span class="cat-count">47</span>
+            </a>
+
+            <?php
+          }
+          }
+        
+        ?>
       </div>
     </div>
  
     <div class="sidebar-section">
       <div class="sidebar-section-title">Most Read</div>
       <div class="popular-list">
-        <a href="#" class="popular-item">
-          <div class="popular-num">1</div>
+        <?php $value = hopQuery::returnMostRead(3, true);
+        $counter = 0;
+          foreach($value as $val){
+            ?>
+        <a href="<?php echo sanitize_url($val['link']); ?>" class="popular-item">
+          <div class="popular-num"><?php echo $counter; ?></div>
           <div class="popular-info">
-            <div class="popular-cat">WordPress</div>
-            <div class="popular-title">Why Your WordPress Site Is Slow</div>
+            <div class="popular-cat"><?php echo $val['cat']; ?></div>
+            <div class="popular-title"><?php echo $val['title']; ?></div>
           </div>
         </a>
-        <a href="#" class="popular-item">
-          <div class="popular-num">2</div>
-          <div class="popular-info">
-            <div class="popular-cat">Business</div>
-            <div class="popular-title">How Much Should a Website Cost?</div>
-          </div>
-        </a>
-        <a href="#" class="popular-item">
-          <div class="popular-num">3</div>
-          <div class="popular-info">
-            <div class="popular-cat">Landing Pages</div>
-            <div class="popular-title">The Anatomy of a Converting Landing Page</div>
-          </div>
-        </a>
-        <a href="#" class="popular-item">
-          <div class="popular-num">4</div>
-          <div class="popular-info">
-            <div class="popular-cat">Tips & Tricks</div>
-            <div class="popular-title">5 Signs It's Time to Redesign Your Website</div>
-          </div>
-        </a>
+          <?
+          $counter++;
+          }
+
+         ?>
       </div>
     </div>
  
     <div class="sidebar-section">
       <div class="sidebar-section-title">Tags</div>
       <div class="tag-cloud">
-        <a href="#" class="tag-chip">WordPress</a>
-        <a href="#" class="tag-chip">SEO</a>
-        <a href="#" class="tag-chip">Speed</a>
-        <a href="#" class="tag-chip">Design</a>
-        <a href="#" class="tag-chip">Squarespace</a>
-        <a href="#" class="tag-chip">Hosting</a>
-        <a href="#" class="tag-chip">E-Commerce</a>
-        <a href="#" class="tag-chip">Plugins</a>
-        <a href="#" class="tag-chip">Security</a>
-        <a href="#" class="tag-chip">Wix</a>
-        <a href="#" class="tag-chip">Domains</a>
-        <a href="#" class="tag-chip">Maintenance</a>
-        <a href="#" class="tag-chip">WooCommerce</a>
-        <a href="#" class="tag-chip">Local SEO</a>
+        <?php $tags = get_tags(); 
+        foreach($tags as $tag){
+          ?>
+          <a href="<?php echo get_tag_link($tag->term_id); ?>" class="tag-chip"><?php echo $tag->name; ?></a>
+
+
+          <?php
+        }
+
+
+
+
+
+
+      ?>
       </div>
     </div>
  

@@ -72,7 +72,7 @@ class noteAppend{
       <p style="font-size: 18px; font-weight: 500; margin: 0; color: var(--color-text-primary);">${this.title}</p>
     </div>
     <div>
-      <button id="close-pop">Close</button>
+      <button class="close" id="close-pop">Close</button>
     </div>
   </div>`;
   this.html += top;

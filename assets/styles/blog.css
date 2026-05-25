@@ -131,7 +131,7 @@
   }
  
   .featured-content {
-    padding: 56px 56px;
+    padding: 4vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -197,7 +197,7 @@
  
   /* BLOG GRID */
   .blog-grid-section {
-    padding: 70px 60px; 
+    padding: 4vw;
     position:relative;
   }
 
@@ -576,5 +576,13 @@
   @media (max-width:700px){
     .blog-grid{
       grid-template-columns: 1fr;
+    }
+
+    .page-header{
+      display:block;
+    }
+
+    .featured-content {
+      padding: 4vw;
     }
   }

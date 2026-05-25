@@ -13,7 +13,7 @@
     padding:4vw;
 }
 .page-content > * {
-    margin:2vw
+    /* margin: auto; */
 }
 
 @media (max-width:800px){
@@ -47,13 +47,13 @@ h3.wp-block-heading{
 }
 
  p{
-    font-family: ui-monospace;
+    /* font-family: ui-monospace; */
     font-kerning: inherit;
     font-palette: dark;
     font-size: 1.1rem;
     font-weight: 300;
     color: #f8d9d9;
-    line-height: 1.9;
+    line-height: 1.6;
     letter-spacing: 0.04em;
     margin-bottom: 20px;
   }

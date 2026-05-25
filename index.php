@@ -11,8 +11,8 @@
 
 <main>
   <section class="hero">
-  <section class="links">
-     <ul class="nav-links">
+  <section class="links-home">
+     <ul class="nav-links home">
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
     <li><a id="process-btn">Process</a></li>

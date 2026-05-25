@@ -74,7 +74,7 @@
     color: var(--gray);
     line-height: 1.8;
     letter-spacing: 0.04em;
-    max-width: 560px;
+    /* max-width: 560px; */
   }
  
   .post-meta-panel {
@@ -160,15 +160,14 @@
     margin: 36px 0 14px;
   }
  
-  .post-content p {
-    font-size: 0.95rem;
+ .post-content p {
+    font-size: 1.2rem;
     font-weight: 300;
     color: #cdcccc;
     line-height: 1.9;
     letter-spacing: 0.03em;
     margin-bottom: 20px;
   }
- 
   .post-content p strong {
     font-weight: 500;
     color: var(--silver-light);
