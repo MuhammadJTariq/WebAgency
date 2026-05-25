@@ -130,7 +130,7 @@
 </section>
  
 <!-- PROCESS -->
-<section class="process" id="process">
+<section class="process" id="process-sec">
   <div class="process-header">
     <h2>How It Works</h2>
   </div>

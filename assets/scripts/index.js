@@ -14,27 +14,18 @@ const observer = new IntersectionObserver((entries) => {
 
 reveals.forEach(el => observer.observe(el));
 
-const processSec = document.querySelector("#process");
-const stepborder = document.querySelector(".step[data-step='1']");
-const observer2 = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        console.log("Intersected Proccess");
-        setTimeout(function(){
-          stepborder.classList.add('border-active');
-        }, 500);
-        returnPopup(0);
-        
-      }
-      else {
-        stepborder.classList.remove('border-active');
-        returnPopup(1);
-        
-      }
-    });
-  }, { threshold: 0.04 });
+const processBtn = document.getElementById("process-btn");
 
-observer2.observe(processSec);
+const processSec = document.querySelector("#process-sec");
+const stepborder = document.querySelector(".step[data-step='1']");
+
+processBtn.addEventListener("click", function(){
+    setTimeout(function(){
+          stepborder.classList.add('border-active');
+          returnPopup(0);
+        }, 500);
+
+})
 
 
 
@@ -75,6 +66,9 @@ class noteAppend{
       <p style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 0 0 3px;">Step 01</p>
       <p style="font-size: 18px; font-weight: 500; margin: 0; color: var(--color-text-primary);">${this.title}</p>
     </div>
+    <div>
+      <button id="close-pop">Close</button>
+    </div>
   </div>`;
   this.html += top;
   this.buildMain();
@@ -114,6 +108,14 @@ notesData.forEach(note => {
 })
 
 
+const closePop = document.querySelectorAll("#close-pop");
+
+closePop.forEach(button => {
+  button.addEventListener("click", function(){
+    returnPopup(1);
+  })
+})
+
 
 
 
@@ -121,6 +123,7 @@ function returnPopup(step){
   if(step === 1){
     const main = document.querySelector("main");
     const popups = document.querySelector(".card-popup");
+    stepborder.classList.remove('border-active');
     gsap.to(popups, {
       opacity: 0,
       duration: 0.5

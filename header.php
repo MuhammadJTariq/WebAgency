@@ -23,7 +23,7 @@
 
    <nav class="desktop-menu">
     <div class="nav-logo">
-      <a href="<?php echo home_url(); ?>">
+      <a  href="<?php echo home_url(); ?>" style="text-decoration: none; color:inherit">
         Hopreneur<span>.</span>
       </a>
     </div>
