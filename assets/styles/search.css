@@ -75,6 +75,7 @@
     letter-spacing: 0.06em;
     padding: 20px 24px;
     caret-color: var(--silver);
+    width: 100%;
   }
  
   .search-input::placeholder { color: var(--gray-dark); }
@@ -234,6 +235,13 @@
     transition: all 0.2s;
   }
 
+.state-empty{
+    width: 100%;
+    padding: 5vw;
+    margin: auto;
+    
+}
+
 
 @media (max-width: 800px){
   .result-item{
@@ -279,9 +287,10 @@
   
   }
 
-@media (max-width:400px){
-  .search-bar-wrap {
-    display : none;
+@media (max-width:550px){
+  
+  .search-input{
+    padding:1vw;
   }
 }
 

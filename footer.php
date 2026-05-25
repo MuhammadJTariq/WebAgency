@@ -17,12 +17,22 @@
     <div>
       <div class="hf-col-title">Services</div>
       <ul class="hf-links">
-        <li><a href="#"><i class="ti ti-layout" aria-hidden="true"></i>Landing Pages</a></li>
-        <li><a href="#"><i class="ti ti-world" aria-hidden="true"></i>Full Websites</a></li>
-        <li><a href="#"><i class="ti ti-brand-wordpress" aria-hidden="true"></i>WordPress</a></li>
-        <li><a href="#"><i class="ti ti-square" aria-hidden="true"></i>Squarespace</a></li>
-        <li><a href="#"><i class="ti ti-shopping-cart" aria-hidden="true"></i>E-Commerce</a></li>
-        <li><a href="#"><i class="ti ti-refresh" aria-hidden="true"></i>Redesigns</a></li>
+        <?php $services = get_posts([
+          'post_type' => 'project',
+          'number_posts' => -1,
+          'post_status' => 'publish'
+        ]);
+        foreach($services as $service){
+          ?>
+          <li><a href="<?php echo get_the_permalink($service->post_id); ?>">
+            <i class="ti ti-layout" aria-hidden="true"></i>
+            <?php echo $service->post_title; ?></a>
+          </li>
+
+          <?php
+        }
+
+        ?>
       </ul>
     </div>
 

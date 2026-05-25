@@ -1,11 +1,6 @@
 <?php get_header();  ?>
 
-<section class="projects-section"
-style="background-image:url('<?php echo THEME_DIR; ?>/images/sketch.png'); 
-background-attachment:fixed;
-
-"
->
+<section class="projects-section">
   <div class="projects-grid">
  
     <!-- CARD 1 — Image -->
