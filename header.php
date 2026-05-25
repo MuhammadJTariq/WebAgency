@@ -22,7 +22,11 @@
 <div class="menu-nav">
 
    <nav class="desktop-menu">
-    <div class="nav-logo">Hopreneur<span>.</span></div>
+    <div class="nav-logo">
+      <a href="<?php echo home_url(); ?>">
+        Hopreneur<span>.</span>
+      </a>
+    </div>
    <ul class="nav-links">
     <?php 
     $pages = get_pages();

@@ -16,6 +16,29 @@ class boot{
         add_action('add_meta_boxes', [$this, 'add_meta']);
         add_action('save_post_note', [$this, 'save_note']);
         add_action('save_post' ,[$this, 'save_featured']);
+        add_filter('the_content', [$this, 'content_filters']);
+    }
+
+    public function content_filters($content){
+        if(is_page('about-3')){
+            ob_start();
+            ?>
+            <div class="signature"
+            style="background-image: url('<?php echo esc_url(THEME_URI . '/images/signature.png');?>');
+                  background-size:cover;
+                  background-position:center;"
+            >
+
+            </div>
+
+
+            <?php
+
+            $img = ob_get_clean();
+            return $content . $img;
+        }
+
+        return $content;
     }
 
     public function save_featured($post_id){
@@ -96,6 +119,7 @@ class boot{
         foreach($disable as $dis){
             remove_post_type_support($dis, 'comments');
         }
+        
         add_rewrite_rule(
                 '^contactform/?$',
                 'index.php?contactform=1',
