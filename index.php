@@ -15,7 +15,7 @@
      <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#process" id="process-btn">Process</a></li>
+    <li><a id="process-btn">Process</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   </section>
