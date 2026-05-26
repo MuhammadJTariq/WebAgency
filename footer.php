@@ -7,10 +7,7 @@
       <div class="hf-brand-name">Hopreneur<span>.</span></div>
       <p class="hf-brand-desc">Building websites for small businesses and entrepreneurs that are built to last and built to work.</p>
       <div class="hf-socials">
-        <a class="hf-social" title="Instagram" aria-label="Instagram"><i class="ti ti-brand-instagram" aria-hidden="true"></i></a>
-        <a class="hf-social" title="LinkedIn" aria-label="LinkedIn"><i class="ti ti-brand-linkedin" aria-hidden="true"></i></a>
-        <a class="hf-social" title="Twitter / X" aria-label="X / Twitter"><i class="ti ti-brand-x" aria-hidden="true"></i></a>
-        <a class="hf-social" title="Facebook" aria-label="Facebook"><i class="ti ti-brand-facebook" aria-hidden="true"></i></a>
+        <a class="hf-social" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </div>
 
@@ -18,7 +15,7 @@
       <div class="hf-col-title">Services</div>
       <ul class="hf-links">
         <?php $services = get_posts([
-          'post_type' => 'project',
+          'post_type' => 'service',
           'number_posts' => -1,
           'post_status' => 'publish'
         ]);
@@ -52,7 +49,9 @@
       <div>
         <div class="hf-contact-item">
           <span class="hf-contact-label">Email</span>
-          <a href="mailto:hello@hopreneur.com" class="hf-contact-val">hello@hopreneur.com</a>
+          <a href="mailto:muhammad.tws49@gmail.com" class="hf-contact-val">
+            muhammad.tws49@gmail.com
+          </a>
         </div>
         <div class="hf-contact-item">
           <span class="hf-contact-label">Location</span>
@@ -64,7 +63,7 @@
         </div>
         <div class="hf-contact-item">
           <span class="hf-contact-label">Response Time</span>
-          <span class="hf-contact-val">Within 24 Hours</span>
+          <span class="hf-contact-val">Within 12 Hours</span>
         </div>
       </div>
     </div>
@@ -120,9 +119,7 @@
   </div>
 
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
 <?php wp_footer(); ?>
 
 </body>

@@ -610,6 +610,7 @@
 @media (max-width:800px){
   .post-row {
     display:block;
+    border-bottom: 1px solid gold;
   }
   .post-row-content {
     padding:3vw;

@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
     <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -38,8 +39,12 @@
     }
 
     ?>
+  
 
    </ul>
+     <form action="/" class="form-nav">
+      <input name="s" type="search" placeholder="Search...">
+    </form>
   <?php if(is_home()){
     ?>
     <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
@@ -70,6 +75,10 @@
       <li><a href="<?php echo get_permalink($page->ID);  ?>"><?php echo $page->post_title; ?></a></li>
       <?
     }
+    ?>
+    <li><a href="<?php echo home_url('/?s='); ?>">Search</a></li>
+
+    <?
 
     ?>
     <?php if(is_home()){
@@ -83,9 +92,7 @@
    <?php
   } 
   ?>
-
    </ul>
-  </ul>
     </div>
   </div>
 </nav>

@@ -1,79 +1,5 @@
-  <?php get_header(); ?>
-  
-  <main>
-  
-  <section class="search-hero">
-    <div class="search-tag">Site Search</div>
-    <h1>Find What<br>You <em>Need.</em></h1>
- 
-    <div class="search-bar-wrap">
-      <div class="search-icon-box">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </div>
-      <form class="search-input" action="">
-        <input
-        type="search"
-        class="search-input"
-        id="searchInput"
-        placeholder="Search articles, topics, platforms…"
-        autocomplete="on"
-        autofocus
-        name="s"
-        aria-label="Search site"
-      >
-      </form>
-      <button class="search-clear" id="searchClear" aria-label="Clear search">Clear</button>
-      <script>
-        const search = document.getElementById("searchInput");
 
-            search.addEventListener("keydown", function(e){
-            if(e.key === "enter"){
-                e.preventDefault();
-            }
-            
-        })
-      </script>
-    </div>
-  </section>
-
-   
-  <!-- RESULTS -->
-  <section class="results-area">
-    <div class="results-list" id="resultsList">
-
-<?php if (have_posts()) : ?>
-    <?php while (have_posts()) : the_post(); ?>
-
-        <a href="<?php the_permalink(); ?>" class="result-item">
-
-            <div class="result-date">
-                <div class="result-day"><?php echo get_the_date('D'); ?></div>
-                <div class="result-month"><?php echo get_the_date('M'); ?></div>
-                <div class="result-year"><?php echo get_the_date('Y'); ?></div>
-            </div>
-
-            <div class="result-body">
-
-
-                <div class="result-title">
-                    <?php the_title(); ?>
-                </div>
-
-                <div class="result-excerpt">
-                    <?php the_excerpt(); ?>
-                </div>
-
-            </div>
-
-            <div class="result-arrow">→</div>
-
-        </a>
-
-    <?php endwhile; ?>
-
-<?php else : ?>
-
-    <style>
+<style>
   @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
   .np * { box-sizing: border-box; }
   .np {
@@ -206,37 +132,15 @@
   <div class="np-divider"></div>
 
   <div class="np-suggestions">
-    <?php $categories = get_categories(); 
-
-    foreach($categories as $cat){
-        if($cat->name === 'Uncategorized'){
-
-        }
-        else {
-            ?>
-
-            <a href="<?php echo get_category_link( $cat->term_id ); ?>" class="np-chip">
-                <?php echo $cat->name; ?>
-            </a>
-
-
-        <?
-        }
-    }
-
-    ?>
+    <button class="np-chip" onclick="sendPrompt('Show me posts about WordPress')">WordPress</button>
+    <button class="np-chip" onclick="sendPrompt('Show me posts about Squarespace')">Squarespace</button>
+    <button class="np-chip" onclick="sendPrompt('Show me posts about landing pages')">Landing Pages</button>
+    <button class="np-chip" onclick="sendPrompt('Show me tips and tricks posts')">Tips & Tricks</button>
+    <button class="np-chip" onclick="sendPrompt('Show me business posts')">Business</button>
   </div>
 
-<?php endif; ?>
-
+  <div class="np-actions">
+    <button class="np-btn-primary" onclick="sendPrompt('Clear my search and show all posts')">Clear Search</button>
+    <button class="np-btn-ghost" onclick="sendPrompt('Browse all posts in the archive')">Browse Archive →</button>
+  </div>
 </div>
- 
-  </section>
-
-
-
-  </main>   
-
-
-<?php get_footer(); ?>
-

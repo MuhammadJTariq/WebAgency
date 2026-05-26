@@ -16,30 +16,9 @@ class boot{
         add_action('add_meta_boxes', [$this, 'add_meta']);
         add_action('save_post_note', [$this, 'save_note']);
         add_action('save_post' ,[$this, 'save_featured']);
-        add_filter('the_content', [$this, 'content_filters']);
     }
 
-    public function content_filters($content){
-        if(is_page('about-3')){
-            ob_start();
-            ?>
-            <div class="signature"
-            style="background-image: url('<?php echo esc_url(THEME_URI . '/images/signature.png');?>');
-                  background-size:cover;
-                  background-position:center;"
-            >
-
-            </div>
-
-
-            <?php
-
-            $img = ob_get_clean();
-            return $content . $img;
-        }
-
-        return $content;
-    }
+    
 
     public function save_featured($post_id){
         $value = isset($_POST['is_featured']) ? 1 : 0;
@@ -98,8 +77,8 @@ class boot{
             'menu_icon' => 'dashicons-media-text'
         ]);
 
-        register_post_type('project', [
-            'label' => 'Projects',
+        register_post_type('service', [
+            'label' => 'Services',
             'public' => true,
             'show_in_menu' => true,
             'show_in_rest' => true,
@@ -373,7 +352,7 @@ class boot{
                     'excerpt'      => $post->post_excerpt,
                     'permalink'    => get_permalink($post->ID),
                     'readtime'     => hopQuery::get_reading_time($post->ID),
-                    'date'         => $post->post_date,
+                    'date'         => get_the_date('F j Y', $post->ID),
                     'category'     => $value,
                     'thumbnail_url'=> get_the_post_thumbnail_url($post->ID, 'full')
                 ];

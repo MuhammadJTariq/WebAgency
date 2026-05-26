@@ -6,15 +6,16 @@
   
 }
 
+
+
 .page-content{
     width:80%;
     margin:auto;
     background-color: black;
     padding:4vw;
+    
 }
-.page-content > * {
-    /* margin: auto; */
-}
+
 
 @media (max-width:800px){
     .page-content{

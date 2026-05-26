@@ -246,6 +246,7 @@
 @media (max-width: 800px){
   .result-item{
     flex-direction:column;
+    border-bottom: 1px solid gold;
   }
   .result-date{
     display:flex;

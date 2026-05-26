@@ -208,8 +208,9 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2vw;
     
-   
   }
+
+ 
 
   .blog-card {
     background: var(--charcoal);

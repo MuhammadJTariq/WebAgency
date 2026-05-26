@@ -107,6 +107,16 @@ body.customize-support::before{
     width:min-content;
 
   }
+
+  form.form-nav input{
+    background-color: #111111;
+    padding: 1vh;
+    font-size: 1rem;
+    color: #e8e8e8;
+    caret-color: silver;
+    outline: none;
+    border: 1px solid gray;
+  }
   .nav-cta {
     background: transparent;
     border: 1px solid var(--gray-mid);
@@ -1113,16 +1123,7 @@ and also use the post_type to make this */
     .hf-top { grid-template-columns: 1fr; gap: 36px; padding: 48px 24px 40px; }
   }
   
-   
-/*
-#tsparticles {
-  position: fixed;
-  inset: 0;
-  z-index: 10001;
-  pointer-events: none;
-  background: transparent;
-}
- */
+
   #mc_embed_signup{
     font-family:inherit;
     width: 80vw;
