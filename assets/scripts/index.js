@@ -132,6 +132,7 @@ function returnPopup(step){
       opacity: 0,
       duration: 0.5
     }); 
+    // we need to add a display-none to remove it from the viewport
     const track = document.querySelector(".track");
     main.classList.remove('blur');
      gsap.to(track, {

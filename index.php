@@ -11,21 +11,23 @@
 
 <main>
   <section class="hero">
-  <section class="links-home">
-     <ul class="nav-links home">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a id="process-btn">Process</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  </section>
+  
   <div class="hero-tag">Web Services &amp; Digital Presence</div>
   <h1>Your Website.<br><em>Built Right.</em><br>Built to Work.</h1>
   <p class="hero-sub">Landing pages, full websites, WordPress, Squarespace, and more — built for businesses that mean business.</p>
   <div class="hero-actions">
     <a href="#services" class="btn-primary">See What I Do</a>
     <a href="#contact" class="btn-secondary">Start a Project</a>
+    
   </div>
+  <div class="links-home">
+  <ul class="nav-links home">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a id="process-btn">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
 </section>
  
 <!-- MARQUEE -->
