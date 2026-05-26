@@ -130,7 +130,8 @@ function returnPopup(step){
     stepborder.classList.remove('border-active');
     gsap.to(popups, {
       opacity: 0,
-      duration: 0.5
+      duration: 0.5,
+      visibility: "hidden"
     }); 
     // we need to add a display-none to remove it from the viewport
     const track = document.querySelector(".track");
@@ -158,9 +159,10 @@ function returnPopup(step){
       opacity: 1,
       x: "-50%",
       y: "-50%",
-      duration: 1.5
+      duration: 1.5,
+      visibility:"visible"
     }); 
-    }, 2000);
+    }, 2500);
     moveCarousel(track, cards);
    
   }

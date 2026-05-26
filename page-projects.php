@@ -167,7 +167,7 @@
 <div class="cta-strip">
   <h2>Got a Project in Mind?</h2>
   <p>Let's talk about what you're building — I'll tell you exactly how I'd approach it.</p>
-  <a href="/#contact" class="btn-primary">Start the Conversation</a>
+  <a href="https://us13.list-manage.com/contact-form?u=6dd9a2693801375b334b9176b&form_id=088d88f24d4ae3778dff73a44e5261bb" class="btn-primary">Start the Conversation</a>
 </div>
  
 <?php get_footer(); ?>

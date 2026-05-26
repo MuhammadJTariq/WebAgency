@@ -90,9 +90,10 @@ body.customize-support::before{
   }
  
   .nav-links a:hover { color: var(--silver-light); }
-
-  .links-home{
-    margin:auto;
+.links-home{
+    /* margin:auto; */
+    margin-top: 10vh;
+    /* width: min-content; */
   }
 
   .nav-links.home{
@@ -105,8 +106,11 @@ body.customize-support::before{
 
   .nav-links.home li{
     width:min-content;
+    background-color:#1f1d1b;
+    padding:2vw
 
   }
+
 
   form.form-nav input{
     background-color: #111111;
@@ -923,6 +927,7 @@ and also use the post_type to make this */
     z-index: 10001;
     background-color: black;
     opacity: 0;
+    visibility: hidden;
 }
 
 @media (max-width:800px){
