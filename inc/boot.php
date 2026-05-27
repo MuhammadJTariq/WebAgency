@@ -24,6 +24,11 @@ class boot{
         $value = isset($_POST['is_featured']) ? 1 : 0;
         update_post_meta($post_id, '_is_featured', $value);
 
+        if(current_user_can( 'edit_posts' )){
+            $headline = isset($_POST['headline']) ? sanitize_text_field($_POST['headline']) : '';
+            update_post_meta($post_id, 'headline', $headline);
+        }
+
 
     }
 
@@ -59,6 +64,38 @@ class boot{
             },
             'post'
         );
+
+        add_meta_box(
+            'headline',
+            'Headline',
+            [$this, 'display_headline'],
+            'post'
+        );
+
+        
+    }
+
+    public function display_headline($post){
+        $headline = get_post_meta($post->ID ,'headline', true );
+        ?>
+        <style>
+            label{
+                width:100%;
+            }
+            textarea#headline-area{
+                width:100%;
+                resize:none;
+            }
+        </style>
+        <textarea name="headline" id="headline-area">
+            <?php echo esc_textarea($headline); ?>
+          
+        </textarea>
+
+        <?
+
+
+
     }
 
     public function register_scripts(){
@@ -98,13 +135,16 @@ class boot{
         foreach($disable as $dis){
             remove_post_type_support($dis, 'comments');
         }
-        
-        add_rewrite_rule(
-                '^contactform/?$',
-                'index.php?contactform=1',
-                'top'
-        );
 
+         register_post_meta('post', 'headline', [
+                'type' => 'string', 
+                'single' => true, 
+                'show_in_rest' => true, 
+                'sanitize_callback' => 'sanitize_text_field',
+                'auth_callback' => function(){
+                    return current_user_can('edit_posts');
+                }
+            ]);
 
         add_rewrite_rule(
             '^filterItem/?$',
@@ -121,20 +161,9 @@ class boot{
             $vars[] = 'contactform';
             $vars[] =  'filterItem';
             $vars[] = 'get';
-            //addtoLog(json_encode($vars, JSON_PRETTY_PRINT));
             return $vars;
             
         });
-        /*register_post_meta('post', 'headline', [
-                'type' => 'string', 
-                'single' => true, 
-                'show_in_rest' => true, 
-                'sanitize_callback' => 'sanitize_text_field',
-                'auth_callback' => function(){
-                    return current_user_can('edit_posts');
-                }
-            ]);
-            */
        
         wp_register_style('style', get_stylesheet_uri());
         wp_register_style('form', STYLES_URI . '/form.css');
@@ -217,9 +246,7 @@ class boot{
             wp_enqueue_style('blog');
             wp_enqueue_script('blog');
             $nonce = wp_create_nonce('filter_nonce');
-            addtoLog("Nonce created" . $nonce);
             $url   = home_url('/filterItem');
-            addtoLog('Url added for blog' . $url);
 
             wp_add_inline_script(
                 'blog',
@@ -275,8 +302,6 @@ class boot{
     }
 
     public function setupDefaults(){
-        global $wpdb;
-        // create the table for the forms - and then another class to handle form submissions
         add_theme_support( 'title-tag' );
         add_theme_support('post-thumbnails');
         add_theme_support('alignwide');
@@ -325,11 +350,7 @@ class boot{
     }
 
     public function intercept_submission(){
-        if(get_query_var('contactform')){
-            addtoLog("contact form intercepted");
-            echo "Hello World";
-            exit;
-        }
+        
         if(get_query_var('filterItem')){
             $nonce = $_GET['nonce'] ?? '';
             $value = $_GET['value'] ?? '';
@@ -359,13 +380,15 @@ class boot{
             }
 
             wp_send_json($data);
-            // set transient with this data for 12 hours each time and then delete 
-            // do this for each value that is filtered and searched
             
         }
 
         if (get_query_var('get')) {
-                // if httprefferrer not single.js exit;
+               if(isset($_SERVER['HTTP_REFERRER'])){
+                    $referrer = $_SERVER['HTTP_REFERER'];
+                    addtoLog($referrer);
+
+               }
                 global $wpdb;
 
                 $id = isset($_POST['id']) ? intval($_POST['id']) : 0;

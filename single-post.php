@@ -24,7 +24,7 @@ if(have_posts()){
       <span class="post-category-tag"><?php echo $cat[0]->name; ?></span>
       <h1><?php echo get_the_title(); ?>
       <p class="post-hero-excerpt">
-        <?php echo get_the_excerpt(  ); ?>
+        <?php echo get_post_meta(get_the_ID(), 'headline', true);?>
       </p>
     </div>
     <div class="post-meta-panel">
