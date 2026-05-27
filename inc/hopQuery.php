@@ -11,10 +11,12 @@ class hopQuery{
     }
 
     public function modify_search($query){
-        if (!is_admin() && $query->is_main_query() && $query->is_search()) {
-        $query->set('post_type', array('post'));
+    if (is_admin() || !$query->is_main_query() || !$query->is_search()) {
+        return;
     }
 
+    $query->set('post_type', array('post'));
+        
     }
 
     public function parse_query(){
@@ -23,7 +25,7 @@ class hopQuery{
             
         }
 
-        if(is_page('about-3')){
+        if(is_page('about')){
             add_filter('the_content', [$this, 'content_filters']);
         }
     }
@@ -35,7 +37,8 @@ class hopQuery{
             style="background-image: url('<?php echo esc_url(THEME_URI . '/images/signature.png');?>');
                   background-size:cover;
                   background-position:center;
-                  height:20vh;"
+                  height:20vh;
+                  width:100%;"
             >
 
             </div>
