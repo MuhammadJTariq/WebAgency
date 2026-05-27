@@ -83,10 +83,20 @@
   }
   else {
     ?>
-   <a href="https://us13.list-manage.com/contact-form?u=6dd9a2693801375b334b9176b&form_id=088d88f24d4ae3778dff73a44e5261bb"><button class="nav-cta">Get a Quote</button></a>
+    <div class="quote-btn">
+      <a href="https://us13.list-manage.com/contact-form?u=6dd9a2693801375b334b9176b&form_id=088d88f24d4ae3778dff73a44e5261bb">
+        <button class="nav-cta">Get a Quote</button>
+      </a>
+    </div>
+   
    <?php
   } 
   ?>
+    <div class="nav-logo">
+      <a  href="<?php echo home_url(); ?>" style="text-decoration: none; color:inherit">
+        Hopreneur<span>.</span>
+      </a>
+    </div>
    </ul>
     </div>
   </div>

@@ -21,7 +21,7 @@ if(have_posts()){
     </div>
   <div class="post-hero-inner">
     <div>
-      <span class="post-category-tag"><?php echo $cat[0]->name; ?></span>
+      <a href="<?php echo get_category_link($cat[0]->term_id); ?>"><span class="post-category-tag"><?php echo $cat[0]->name; ?></span></a>
       <h1><?php echo get_the_title(); ?>
       <p class="post-hero-excerpt">
         <?php echo get_post_meta(get_the_ID(), 'headline', true);?>
