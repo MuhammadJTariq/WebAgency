@@ -7,7 +7,6 @@ class hopQuery{
     public static $headings = [];
     public function __construct(){
         add_action('parse_query', [$this, 'parse_query']);
-        //add_action('parse_query', [$this, 'loadBlog']);
     }
 
     public function parse_query(){
@@ -59,10 +58,10 @@ class hopQuery{
             $text = trim($el->textContent);
             $id = sanitize_title($text) . '-' . $index;
 
-            // inject ID into HTML
+
             $el->setAttribute('id', $id);
 
-            // ✅ IMPORTANT: append, not overwrite
+
             $headings[] = [
                 'tag'  => $tag,
                 'text' => $text,
@@ -172,7 +171,7 @@ class hopQuery{
 
 
 
-                <?
+                <?php
                 echo ob_get_clean();
             }
         }
@@ -236,7 +235,7 @@ class hopQuery{
 
 
 
-                <?
+                <?php
 
 
             }
@@ -283,7 +282,7 @@ class hopQuery{
                     </p>
                     </div>
                 </a>
-                <?
+                <?php
 
                 echo ob_get_clean();
                 $counter++;
