@@ -316,7 +316,17 @@ class boot{
        
 
     public function switchTheme(){
-         global $wpdb;
+        $pages = ['projects', 'blog', 'about'];
+
+        foreach($pages as $page){
+            wp_insert_post([
+                'post_title' => $page,
+                'post_content' => '',
+                'post_status' => 'publish', 
+                'post_type' => 'page'
+            ]);
+        }
+        global $wpdb;
 
         $table_4 = $wpdb->prefix . "most_read";
         $charset_collate = $wpdb->get_charset_collate();

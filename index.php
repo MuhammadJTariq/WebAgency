@@ -56,7 +56,7 @@
 <section class="services" id="services">
   <div class="section-label">What I Build</div>
   <div class="services-grid">
-    <a style="text-decoration: none" href="<?php echo home_url('/project/landing-pages/') ?>">
+    <a style="text-decoration: none" href="">
     <div class="service-card reveal">
       <div class="service-num">02</div>
       <div class="service-icon">▦</div>
