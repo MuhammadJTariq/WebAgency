@@ -256,21 +256,16 @@ class hopQuery{
     }
 
     public static function returnMostRead($count = 5, $format = false){
-        global $wpdb;
-        $table = $wpdb->prefix . 'most_read';
-        $post_ids = $wpdb->get_col(
-            "SELECT post_id
-            FROM $table 
-            ORDER BY views DESC
-            LIMIT $count"
-        );
-        $query = new WP_Query([
+        $args = [
             'post_type' => 'post',
-            'post__in' => $post_ids,
-            'orderby' => 'post__in',
-            'posts_per_page' => $count,
-        ]);
+            'meta_key' => 'views',
+            'orderby' => 'meta_value_num',
+            'order' => 'DESC',
+            'LIMIT' => $count
 
+        ];
+
+        $query = new WP_Query($args);
         if($query->have_posts()){
             $counter = 0;
             $array = [];

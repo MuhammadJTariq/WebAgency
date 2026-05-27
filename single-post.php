@@ -40,10 +40,6 @@ if(have_posts()){
         <div class="meta-label">Read Time</div>
         <div class="meta-value"><?php echo hopQuery::get_reading_time(get_the_ID()); ?> Read</div>
       </div>
-      <div class="meta-block">
-        <div class="meta-label">Category</div>
-        <div class="meta-value">WordPress</div>
-      </div>
     </div>
   </div>
    <!-- HERO IMAGE -->

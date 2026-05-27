@@ -612,15 +612,18 @@
     display:block;
   }
   .post-row {
-    display:block;
+    /* display:block; */
     border-bottom: 1px solid gold;
+  }
+  .post-row-day {
+    font-size: 0.8rem;
   }
   .post-row-content {
     padding:3vw;
   }
   .post-row-date {
     padding:2vw;
-    width:min-content; 
+    width:min-content;
     margin: auto;
     border-right: none;
   }

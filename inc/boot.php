@@ -328,40 +328,16 @@ class boot{
                 'post_type' => 'page'
             ]);
         }
-        global $wpdb;
-
-        $table_4 = $wpdb->prefix . "most_read";
-        $charset_collate = $wpdb->get_charset_collate();
-
-        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-
-        $sql4 = "CREATE TABLE {$table_4} (
-
-            id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-
-            post_id BIGINT UNSIGNED NOT NULL,
-
-            views BIGINT UNSIGNED DEFAULT 0,
-
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
-            PRIMARY KEY (id),
-
-            KEY post_id (post_id),
-
-            CONSTRAINT fk_most_read_post
-                FOREIGN KEY (post_id)
-                REFERENCES {$wpdb->posts}(ID)
-                ON DELETE CASCADE
-
-        ) $charset_collate;";
-
-        dbDelta($sql4);
-    
         flush_rewrite_rules();
     }
 
     public function intercept_submission(){
+        /*if(!is_admin()){
+            $uri = $_SERVER['REQUEST_URI'];
+            if($uri === 'wp-login.php?'){
+                wp_redirect( home_url('/'), 200 );
+            }
+        } */
         
         if(get_query_var('filterItem')){
             $nonce = $_GET['nonce'] ?? '';
@@ -396,46 +372,38 @@ class boot{
         }
 
         if (get_query_var('get')) {
-               if(isset($_SERVER['HTTP_REFERRER'])){
+               if (isset($_SERVER['HTTP_REFERER'])) {
                     $referrer = $_SERVER['HTTP_REFERER'];
                     addtoLog($referrer);
-
-               }
-                global $wpdb;
-
-                $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
-
-                if (isset($_POST['action']) && $_POST['action'] === 'update_views') {
-
-                    $table = $wpdb->prefix . 'most_read';
-
-                    $exists = $wpdb->get_var(
-                        $wpdb->prepare(
-                            "SELECT COUNT(*) FROM $table WHERE post_id = %d",
-                            $id
-                        )
-                    );
-
-                    if ($exists > 0) {
-                        $wpdb->query(
-                            $wpdb->prepare(
-                                "UPDATE $table SET views = views + 1 WHERE post_id = %d",
-                                $id 
-                            )
-                        );
-                    } else {
-                        $wpdb->insert(
-                            $table,
-                            [
-                                'post_id' => $id,
-                                'views' => 1
-                            ]
-                        );
-                    }
-
-                    wp_send_json_success(['message' => 'row updated successfully']);
                 }
-}
+
+                $values = $_POST;
+
+                if (empty($values) || !isset($values['action']) || $values['action'] !== 'update_views') {
+                    wp_send_json_error([
+                        "message" => "This action could not be completed"
+                    ]);
+                }
+
+                $id = isset($values['id']) ? (int) $values['id'] : 0;
+
+                if (!$id) {
+                    wp_send_json_error([
+                        "message" => "Invalid post ID"
+                    ]);
+                }
+
+                $num = (int) get_post_meta($id, 'views', true);
+                $num++;
+
+                update_post_meta($id, 'views', $num);
+
+                wp_send_json_success([
+                    "message" => "views updated"
+                ]);
+
+            
+           }
     }
 }
 
