@@ -21,24 +21,26 @@ class boot{
     
 
     public function save_featured($post_id){
-        $value = isset($_POST['is_featured']) ? 1 : 0;
-        update_post_meta($post_id, '_is_featured', $value);
 
         if(current_user_can( 'edit_posts' )){
             $headline = isset($_POST['headline']) ? sanitize_text_field($_POST['headline']) : '';
             update_post_meta($post_id, 'headline', $headline);
+            $value = isset($_POST['is_featured']) ? 1 : 0;
+            update_post_meta($post_id, '_is_featured', $value);
         }
 
 
     }
 
     public function save_note($post_id){
-        if(isset($_POST['note_step'])){
+        if(current_user_can('edit_posts')){
+            if(isset($_POST['note_step'])){
             update_post_meta(
                 $post_id, 
                 'note_step', 
                 sanitize_text_field( $_POST['note_step'] )
             );
+        }
         }
     }
 
@@ -92,7 +94,7 @@ class boot{
           
         </textarea>
 
-        <?
+        <?php
 
 
 
