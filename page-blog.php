@@ -22,7 +22,7 @@
     else{
       ?>
     <button class="filter-btn"><?php echo $cat->name; ?></button>
-    <?
+    <?php
     }
   }
   ?>

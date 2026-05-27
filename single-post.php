@@ -55,7 +55,7 @@ if(have_posts()){
     </div>
 
 
-    <?
+    <?php
 
   }
   else {
@@ -147,7 +147,7 @@ if(have_posts()){
   </div>
 </section>
     
-  <? 
+  <?php
 
     echo ob_get_clean();
   }
