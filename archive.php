@@ -119,7 +119,7 @@ function display_header($wp_query){
             <div class="popular-title"><?php echo $val['title']; ?></div>
           </div>
         </a>
-          <?
+          <?php
           $counter++;
           }
 

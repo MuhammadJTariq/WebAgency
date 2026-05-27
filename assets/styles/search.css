@@ -1,4 +1,4 @@
-  main { flex: 1; padding-top: 88px; }
+  main { flex: 1; padding-top: 0; }
  
   /* SEARCH HERO */
   .search-hero {
@@ -274,6 +274,10 @@
   
     .search-bar-wrap{
       flex-direction:column-reverse;
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      padding: 3vw;
+      /* margin: auto; */
     }
     .search-input{
          padding: 4vh;

@@ -133,7 +133,7 @@ class boot{
             "menu_con" => 'dashicons-media-text'
         ]);
 
-        $disable = ['project', 'note', 'post', 'page'];
+        $disable = ['service', 'note', 'post', 'page'];
         foreach($disable as $dis){
             remove_post_type_support($dis, 'comments');
         }

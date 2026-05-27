@@ -7,6 +7,14 @@ class hopQuery{
     public static $headings = [];
     public function __construct(){
         add_action('parse_query', [$this, 'parse_query']);
+        add_action('pre_get_posts', [$this, 'modify_search']);
+    }
+
+    public function modify_search($query){
+        if (!is_admin() && $query->is_main_query() && $query->is_search()) {
+        $query->set('post_type', array('post'));
+    }
+
     }
 
     public function parse_query(){

@@ -72,17 +72,7 @@
   </aside>
 </section>
  
-<!-- NEWSLETTER -->
-<section class="newsletter">
-  <div class="newsletter-left reveal">
-    <h2>Stay in<br>The Loop.</h2>
-    <p>New posts on web tips, platform guides, and business advice — straight to your inbox. No spam, ever.</p>
-  </div>
-  <div class="newsletter-form reveal">
-    <input type="email" class="newsletter-input" placeholder="your@email.com">
-    <button class="newsletter-btn">Subscribe</button>
-  </div>
-</section>
+
 
  
 <?php get_footer(); ?>

@@ -7,16 +7,11 @@
     <?php wp_head(); ?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-<body>
-    <?php body_class(); ?>
-
+<body <?php body_class(); ?>>
 <?php if(is_single()){
   echo '<div class="progress-bar" id="progress"></div>';
 }
@@ -73,7 +68,7 @@
     foreach($pages as $page){
       ?>
       <li><a href="<?php echo get_permalink($page->ID);  ?>"><?php echo $page->post_title; ?></a></li>
-      <?
+      <?php
     }
     ?>
     <li><a href="<?php echo home_url('/?s='); ?>">Search</a></li>

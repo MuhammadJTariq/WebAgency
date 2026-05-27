@@ -1185,17 +1185,15 @@ and also use the post_type to make this */
 }
 
 .input-area{
-  border:1px solid black;
   flex:3;
 
-}
-.input-area div{
 }
 
 .input-area div *{
   margin-top:1vh;
   margin-bottom:1vh;
 }
+
 
 .email-input{
     background: var(--dark);
@@ -1214,7 +1212,6 @@ and also use the post_type to make this */
 
 .optionalParent{
   flex:1;
-  border:1px solid black;
 }
 
 

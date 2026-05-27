@@ -608,6 +608,9 @@
 
 
 @media (max-width:800px){
+  .page-header-inner{
+    display:block;
+  }
   .post-row {
     display:block;
     border-bottom: 1px solid gold;
