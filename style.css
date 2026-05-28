@@ -104,22 +104,23 @@ body.customize-support::before{
     font-size:1rem;
   }
 
-  .nav-links.home li{
+   .nav-links.home li{
     width:min-content;
     background-color:#1f1d1b;
-    padding:2vw
-
+    padding: 10px;
+    border-radius: 2vw;
+    corner-shape: bevel;
   }
 
 
   form.form-nav input{
     background-color: #111111;
-    padding: 1vh;
+    padding: 1vw;
     font-size: 1rem;
     color: #e8e8e8;
     caret-color: silver;
     outline: none;
-    border: 1px solid gray;
+    border: none;
   }
   .nav-cta {
     background: transparent;
@@ -531,19 +532,17 @@ body.customize-support::before{
   .process-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
     border: 1px solid #1e1e1e;
   }
  
   .step {
     padding: 48px 36px;
-    border-right: 1px solid #1e1e1e;
+    border-right: 1px solid #3a2020;
     position: relative;
+    transition:background-color 1s ease-in;
   }
 
-   .step:hover{
-    border:var(--border-onhover);
-  }
+  
 
 .step.border-active::before {
   content: "";
@@ -932,7 +931,7 @@ and also use the post_type to make this */
 
 @media (max-width:800px){
   .card-popup{
-    width:100%;
+    width:85%;
   }
 }
 .track{
@@ -981,9 +980,10 @@ and also use the post_type to make this */
 .toggle-box{
   display: flex;
   padding:2vw;
+  align-items: center;
   background-color:#000000;
-
 }
+
 
 .toggle {
   margin-left:auto;
@@ -1232,5 +1232,32 @@ and also use the post_type to make this */
   align-items: center; 
   gap: 12px; 
   margin-bottom: 1.5rem; 
-  justify-content:space-around;
+  justify-content:space-between;
+}
+
+.card-bottom{
+  width:100%;
+  border-top: 0.5px solid var(--color-border-tertiary); 
+  padding-top: 1.25rem; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  flex-wrap: wrap;
+      
+}
+
+.card-bottom > p{
+  flex: 0 0 100%;
+
+}
+
+.next-slide{
+  margin-top:2vw;
+  width:100%;
+  padding:0.5vw;
+  text-align: center;
+}
+
+.next-slide button{
+  padding:0.5vw 4vw;
 }

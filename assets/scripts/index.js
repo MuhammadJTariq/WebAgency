@@ -79,13 +79,14 @@ class noteAppend{
   buildMain(){
     let mainTop = ' <div class="card-content" style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1.5rem;">';
     let mainMiddle = this.content;
-    let mainBottom = ` <div class="card-inner" style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
-      <p style="font-size: 12px; color: var(--color-text-tertiary); margin: 0; letter-spacing: 0.05em;">Included with every project</p>
+    let mainBottom = ` <div class="card-bottom">
+    <p style="font-size: 12px; color: var(--color-text-tertiary); margin: 0; letter-spacing: 0.05em;">
+    Included with every project</p>
       <button onclick="sendPrompt('Tell me more about the Discovery process at Hopreneur')" style="font-size: 13px; padding: 8px 18px; cursor: pointer; display: flex; align-items: center; gap: 6px;">
         Learn more ↗
       </button>
-      <div>
-      Next
+      <div class="next-slide">
+      <button id="next-btn">Next</button>
       </div>
     </div>`;
     this.html += mainTop;
@@ -103,6 +104,9 @@ class noteAppend{
   buildFinish(){
     const sectionPopup = document.querySelector(".track")
     sectionPopup.insertAdjacentHTML("afterbegin", this.html);
+    const lastBox = sectionPopup.lastElementChild;
+    const button = lastBox.querySelector(".next-slide");
+    button.style.display = "none";
 
   }
 }
@@ -110,6 +114,8 @@ class noteAppend{
 notesData.forEach(note => {
   new noteAppend(note.title, note.content, note.step);
 })
+
+
 
 
 const closePop = document.querySelectorAll("#close-pop");
@@ -133,7 +139,6 @@ function returnPopup(step){
       duration: 0.5,
       visibility: "hidden"
     }); 
-    // we need to add a display-none to remove it from the viewport
     const track = document.querySelector(".track");
     main.classList.remove('blur');
      gsap.to(track, {
@@ -148,8 +153,6 @@ function returnPopup(step){
   if(step === 0){
     const main = document.querySelector("main");
     const popups = document.querySelector(".card-popup");
-    const track = document.querySelector(".track");
-    const cards = document.querySelectorAll(".card-steps");
     setTimeout(() => {
       main.classList.add('blur');
     }, 2000)
@@ -163,15 +166,47 @@ function returnPopup(step){
       visibility:"visible"
     }); 
     }, 2500);
-    moveCarousel(track, cards);
    
   }
   
 }
 
+const nextBtn = document.querySelectorAll("#next-btn");
+
+nextBtn.forEach(btn => {
+  btn.addEventListener("click", function(e){
+    const parent = this.closest(".card-steps");
+    const step = Number(parent.dataset.step);
+    const track = document.querySelector(".track");
+    moveCarousel(track, step);
+
+  });
+});
+
+function moveCarousel(track, step){
+  if(track.children.length === step){
+    return;
+  }
+  else{
+    gsap.to(track, {
+    xPercent: - 100 * step,
+    duration: 0.8,
+    ease: "power2.inOut"
+  });
+  }
+
+}
 
 
+function rollView(element){
+  element.classList.add('expand');
 
+}
+
+});
+
+
+/*
 function moveCarousel(track, cards){
   let interval;
   let index = 0;
@@ -195,10 +230,7 @@ function moveCarousel(track, cards){
 
 
 });
+*/
 
 
 
-
-function rollView(element){
-  element.classList.add('expand');
-}

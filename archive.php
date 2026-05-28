@@ -94,7 +94,7 @@ function display_header($wp_query){
               ?>
             <a href="<?php echo get_category_link($cat->term_id); ?>" class="cat-item active">
               <span class="cat-name"><?php echo $cat->name; ?></span>
-              <span class="cat-count">47</span>
+              <span class="cat-count"><?php echo $cat->count; ?></span>
             </a>
 
             <?php
