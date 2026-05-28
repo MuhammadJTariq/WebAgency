@@ -58,7 +58,7 @@
       <a  href="<?php echo home_url(); ?>" style="text-decoration: none; color:inherit">
         Hopreneur<span>.</span>
       </a>
-    </div>
+    </div>  
     <input type="checkbox" id="checkbox">
     <label for="checkbox" class="toggle">
         <div class="bars" id="bar1"></div>
@@ -72,7 +72,7 @@
     $pages = get_pages();
     foreach($pages as $page){
       ?>
-      <li><a href="<?php echo get_permalink($page->ID);  ?>"><?php echo $page->post_title; ?></a></li>
+      <li><a href="<?php echo get_permalink($page->ID);  ?>"><?php echo ucfirst($page->post_title); ?></a></li>
       <?php
     }
     ?>
