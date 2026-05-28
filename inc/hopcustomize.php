@@ -23,8 +23,32 @@ class hopCustomize{
             'section' => 'hero_section', 
             'type' => 'textarea'
         ));
+        $links = ['Facebook', 'LinkedIn', 'Github'];
 
+       $links = [
+            'facebook' => 'Facebook',
+            'linkedin' => 'LinkedIn',
+            'github'   => 'Github'
+        ];
 
+        foreach ($links as $key => $label) {
+
+            $setting_id = 'hop_' . $key;
+
+            $wp_customize->add_setting($setting_id, array(
+                'default'           => '',
+                'sanitize_callback' => 'esc_url_raw'
+            ));
+
+            $wp_customize->add_control($setting_id . '_control', array(
+                'label'    => $label,
+                'section'  => 'hero_section',
+                'settings' => $setting_id,
+                'type'     => 'url'
+            ));
+        }
     }
 
 }
+
+new hopCustomize();

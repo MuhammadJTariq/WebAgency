@@ -2,12 +2,31 @@
 <footer class="hf">
 
   <div class="hf-top">
+  <?php $array = [
+    'linkedin' => esc_url(get_theme_mod('hop_linkedin')),
+    'facebook' => esc_url(get_theme_mod('hop_facebook')),
+    'github' => esc_url(get_theme_mod('hop_github'))
+  ];
 
+  ?>
     <div>
       <div class="hf-brand-name">Hopreneur<span>.</span></div>
       <p class="hf-brand-desc">Building websites for small businesses and entrepreneurs that are built to last and built to work.</p>
       <div class="hf-socials">
-        <a class="hf-social" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <?php foreach($array as $key => $url){
+          if(!empty($url)){
+            ?>
+            <a href="<?php echo $val; ?>" class="hf-social" title="<?php echo esc_attr($key); ?>" aria-label="<?php echo esc_attr($key); ?>">
+              <i class="fab fa-<?php echo esc_attr($key); ?>">
+
+              </i>
+            </a>
+
+            <?php
+          }
+
+        }
+        ?>
       </div>
     </div>
 
@@ -36,11 +55,18 @@
     <div>
       <div class="hf-col-title">Company</div>
       <ul class="hf-links">
-        <li><a href="#"><i class="ti ti-user" aria-hidden="true"></i>About</a></li>
-        <li><a href="#"><i class="ti ti-list-check" aria-hidden="true"></i>Process</a></li>
-        <li><a href="#"><i class="ti ti-writing" aria-hidden="true"></i>Blog</a></li>
-        <li><a href="#"><i class="ti ti-file-invoice" aria-hidden="true"></i>Get a Quote</a></li>
-        <li><a href="#"><i class="ti ti-mail" aria-hidden="true"></i>Contact</a></li>
+        <?php $pages = get_pages();
+        foreach($pages as $page){
+          ?>
+          <li>
+        <a href="<?php echo get_permalink($page->ID); ?> ">
+            <?php echo $page->post_title; ?>
+        </a>
+      </li>
+          <?php
+        }
+
+        ?>
       </ul>
     </div>
 
@@ -109,7 +135,7 @@
     <div class="hf-copy">© 2025 Hopreneur Web Services. All rights reserved.</div>
     <div class="hf-badges">
       <span class="hf-badge">WordPress Expert</span>
-      <span class="hf-badge">Squarespace Partner</span>
+      <span class="hf-badge">Squarespace Expert</span>
     </div>
     <div class="hf-legal-links">
       <a href="#">Privacy Policy</a>
