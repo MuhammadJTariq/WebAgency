@@ -86,7 +86,7 @@ class noteAppend{
         Learn more ↗
       </button>
       <div class="next-slide">
-      <button id="next-btn">Next</button>
+      <button class="liquid" id="next-btn">Next</button>
       </div>
     </div>`;
     this.html += mainTop;
