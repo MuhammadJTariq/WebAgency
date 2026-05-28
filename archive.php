@@ -63,7 +63,7 @@ function display_header($wp_query){
                 </a>
 
 
-                <?
+                <?php
 
 
             }
