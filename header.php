@@ -54,6 +54,11 @@
    </nav>
   <div class="mobile-menu">
     <div class="toggle-box">
+      <div class="nav-logo">
+      <a  href="<?php echo home_url(); ?>" style="text-decoration: none; color:inherit">
+        Hopreneur<span>.</span>
+      </a>
+    </div>
     <input type="checkbox" id="checkbox">
     <label for="checkbox" class="toggle">
         <div class="bars" id="bar1"></div>
@@ -78,7 +83,9 @@
     ?>
     <?php if(is_home()){
     ?>
+    <div class="quote-btn">
     <button class="nav-cta mobile" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+    </div>
     <?php
   }
   else {
@@ -92,11 +99,7 @@
    <?php
   } 
   ?>
-    <div class="nav-logo">
-      <a  href="<?php echo home_url(); ?>" style="text-decoration: none; color:inherit">
-        Hopreneur<span>.</span>
-      </a>
-    </div>
+   
    </ul>
     </div>
   </div>
