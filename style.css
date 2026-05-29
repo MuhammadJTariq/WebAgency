@@ -61,21 +61,24 @@ body.customize-support::before{
     backdrop-filter: blur(6px);
   }
  
-  .nav-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
+ 
+  .nav-logo span{
+    font-size: 1rem;
+    font-weight:400;
     text-transform: uppercase;
     color: var(--white);
-    animation:flip 2s ease-in;
+    display: inline-block;
+    animation:flip 1s ease-in;
     animation-delay: calc(.2s * var(--i));
   }
 
   @keyframes flip{
-    0%, 80%{
+    0%, 40%{
       transform: rotateY(360deg);
+      font-weight:700;
+      font-size:1.5rem;
     }
-
+   
   }
  
   .nav-logo span {
