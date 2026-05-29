@@ -10,37 +10,19 @@ class boot{
     public function __construct(){
         add_action('init', [$this, 'register_scripts']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_scripts']);
-        add_action('customize_register', [$this, 'customize_register_theme']);
         add_action('after_setup_theme', [$this, 'setupDefaults']);
         add_action('after_switch_theme', [$this, 'switchTheme']);
         add_action('template_redirect', [$this, 'intercept_submission']);
         add_action('add_meta_boxes', [$this, 'add_meta']);
         add_action('save_post_note', [$this, 'save_note']);
         add_action('save_post' ,[$this, 'save_featured']);
+        
     }
+
 
     
 
-    public function customize_register_theme($wp_customize){
-        $wp_customize->add_section('hero_section', array(
-            'title' => 'Hero Settings', 
-            'priority' => 30
-        ));
-
-
-        $wp_customize->add_setting('hero_heading', array(
-            'default' => "your website. built right. built to work.",
-            'sanitize_callback' => 'sanitize_text_field'
-        ));
-
-        $wp_customize->add_control('hero_heading', array(
-            'label' => 'Hero Heading',
-            'section' => 'hero_section', 
-            'type' => 'textarea'
-        ));
-
-
-    }
+    
 
     public function save_featured($post_id){
 
@@ -181,6 +163,8 @@ class boot{
             'index.php?get=1',
             'top'
         );
+
+       
         add_filter('query_vars', function($vars){
             $vars[] = 'contactform';
             $vars[] =  'filterItem';
@@ -354,12 +338,7 @@ class boot{
     }
 
     public function intercept_submission(){
-        /*if(!is_admin()){
-            $uri = $_SERVER['REQUEST_URI'];
-            if($uri === 'wp-login.php?'){
-                wp_redirect( home_url('/'), 200 );
-            }
-        } */
+        
         
         if(get_query_var('filterItem')){
             $nonce = $_GET['nonce'] ?? '';
