@@ -67,6 +67,15 @@ body.customize-support::before{
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--white);
+    animation:flip 2s ease-in;
+    animation-delay: calc(.2s * var(--i));
+  }
+
+  @keyframes flip{
+    0%, 80%{
+      transform: rotateY(360deg);
+    }
+
   }
  
   .nav-logo span {
@@ -1275,3 +1284,4 @@ and also use the post_type to make this */
   --t: 0.3s;
   color: #fff;
 }
+

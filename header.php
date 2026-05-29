@@ -20,8 +20,16 @@
 
    <nav class="desktop-menu">
     <div class="nav-logo">
-      <a  href="<?php echo home_url(); ?>" style="text-decoration: none; color:inherit">
-        Hopreneur<span>.</span>
+      <a href="<?php echo home_url(); ?>" style="text-decoration:none;">
+        <span style="--i:1">H</span>
+        <span style="--i:2">o</span>
+        <span style="--i:3">p</span>
+        <span style="--i:4">r</span>
+        <span style="--i:5">e</span>
+        <span style="--i:6">n</span>
+        <span style="--i:7">u</span>
+        <span style="--i:8">r</span>
+        <span>.</span>
       </a>
     </div>
    <ul class="nav-links">
