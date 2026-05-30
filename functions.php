@@ -14,6 +14,7 @@ function addtoLog($value){
 }
 
 
+
 $dir = scandir(THEME_DIR . '/inc');
 foreach ($dir as $file) {
     if ($file === '.' || $file === '..') {
